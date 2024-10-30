@@ -50,7 +50,7 @@ npm-debug.log*
 .cache/
 
 # Version control
-.git/
+# .git/
 .gitattributes
 
 # Testing and coverage
