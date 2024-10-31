@@ -30,4 +30,4 @@ jobs:
         with:
           commit_message: 'Automated build and deploy'
           branch: main
-          file_pattern: docs/**
+          file_pattern: docs/** docs/.nojekyll
