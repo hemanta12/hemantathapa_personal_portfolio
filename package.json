@@ -18,9 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build && rm -rf docs && mv build docs && echo > docs/.nojekyll",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
