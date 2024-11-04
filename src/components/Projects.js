@@ -1,13 +1,21 @@
 import React from 'react';
 import carrace from '../assets/car-race.png';
+import dumpnotes from '../assets/dumpnotes.png';
 
 const projects = [
   {
     title: 'Car Race',
     description: '2d car race',
     image: carrace, // Use imported image
-    liveLink: 'https://thapahemantcarracejs.netlify.app/',
+    liveLink: 'https://thapahemantcarracejs.netlify.app',
     githubLink: 'https://github.com/hemanta12/car-race-js'
+  },
+  {
+    title: 'Dumpnotes',
+    description: 'Simple note writing website',
+    image: dumpnotes, // Use imported image
+    liveLink: 'https://dumpnotess.netlify.app',
+    githubLink: 'https://github.com/hemanta12/DumpNotes'
   },
   
  
