@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.0650bf5f.css",
-    "main.js": "/static/js/main.b8f21006.js",
+    "main.css": "/static/css/main.b399f4d7.css",
+    "main.js": "/static/js/main.281bbd5b.js",
     "static/js/453.b21437c2.chunk.js": "/static/js/453.b21437c2.chunk.js",
     "static/media/profile.JPG": "/static/media/profile.a48a0226aada1d73cdc2.JPG",
     "static/media/car-race.png": "/static/media/car-race.3092d71b0154e3b5e2fc.png",
+    "static/media/dumpnotes.png": "/static/media/dumpnotes.ac4d2d30b67330d948b5.png",
     "static/media/Hemanta Thapa - Full-Stack Software Developer - Resume.pdf": "/static/media/Hemanta Thapa - Full-Stack Software Developer - Resume.1a7ae603c095dfc80f03.pdf",
     "static/media/github.png": "/static/media/github.a855c3975c028d8069f5.png",
     "static/media/solution.png": "/static/media/solution.ed49c9f6ce507084a533.png",
     "static/media/projects.png": "/static/media/projects.88cfdb105edc63225cb4.png",
     "index.html": "/index.html",
-    "main.0650bf5f.css.map": "/static/css/main.0650bf5f.css.map",
-    "main.b8f21006.js.map": "/static/js/main.b8f21006.js.map",
+    "main.b399f4d7.css.map": "/static/css/main.b399f4d7.css.map",
+    "main.281bbd5b.js.map": "/static/js/main.281bbd5b.js.map",
     "453.b21437c2.chunk.js.map": "/static/js/453.b21437c2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0650bf5f.css",
-    "static/js/main.b8f21006.js"
+    "static/css/main.b399f4d7.css",
+    "static/js/main.281bbd5b.js"
   ]
 }
