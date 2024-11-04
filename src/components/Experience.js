@@ -59,10 +59,10 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="min-h-screen flex flex-col items-center py-16 bg-gray-50 scroll-mt-20"
+      className="min-h-screen flex flex-col items-center py-16 bg-gray-50 scroll-mt-10"
     >
       {/* Heading */}
-      <h2 className="text-3xl font-bold mb-8">Work Experience</h2>
+      <h2 className="text-3xl font-bold mb-8 mt-10">Work Experience</h2>
 
       {/* Experience Content */}
       <div className="max-w-6xl w-full px-6 space-y-12">

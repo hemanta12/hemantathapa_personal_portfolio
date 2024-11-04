@@ -15,7 +15,7 @@ const Home = () => {
 
       {/* Left: Name and Job Title */}
       <div className="flex flex-col items-start w-full mb-6 lg:w-1/3  lg:mb-0">
-        <p className="text-2xl sm:text-2xl mt-10 md:text-5xl lg:text-6xl text-gray-600 lg:mt-12 break-words w-full text-center ">
+        <p className="text-2xl sm:text-2xl mt-5 md:text-5xl lg:text-6xl text-gray-600 lg:mt-12 break-words w-full text-center ">
             Full-Stack Developer
         </p>
       </div>
