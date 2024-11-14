@@ -12,12 +12,10 @@ const Contact = () => {
     message: '',
   });
 
-  // Handle Input Change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle Form Submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -74,7 +72,7 @@ const Contact = () => {
         <div className="flex space-x-4">
           
           <a
-            href="https://www.linkedin.com/in/your-linkedin-profile" // Replace with your LinkedIn profile URL
+            href="https://www.linkedin.com/in/your-linkedin-profile"
             target="_blank"
             rel="noopener noreferrer"
             className=" "
@@ -85,7 +83,7 @@ const Contact = () => {
           </a>
           {/* GitHub */}
           <a
-            href="https://github.com/yourusername" // Replace with your GitHub profile URL
+            href="https://github.com/yourusername" 
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-800 hover:text-black"

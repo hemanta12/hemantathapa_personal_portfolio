@@ -17,7 +17,6 @@ function App() {
       <Projects/>
       <Skills/>
       <Contact/>
-      {/* We will add other sections like About, Projects, etc. later */}
     </div>
   );
 }

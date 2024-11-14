@@ -1,110 +1,96 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import projects from '../assets/projects.png'
-import work from '../assets/briefcase.png'
-import skills from '../assets/solution.png'
-import about from '../assets/about.png'
+import { FaBars } from 'react-icons/fa';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {      
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    
-
-    // Scroll spy logic
-    const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact']; // IDs of sections
+      setIsScrolled(window.scrollY > 0);
+     
+    const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact']; 
     let currentSection = '';
 
     sections.forEach(id => {
-      const section = document.getElementById(id); // Get the section by ID
+      const section = document.getElementById(id);
       if (section) {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight; 
 
-        if (window.scrollY >= sectionTop - 60 && window.scrollY < sectionTop + sectionHeight - 50) { // Adjust the threshold as necessary
-          currentSection = id; // Set the current section
+        if (window.scrollY >= sectionTop - 60 && window.scrollY < sectionTop + sectionHeight - 50) {
+          currentSection = id; 
         }
       }
     });
 
-
-    // Remove active class from all nav links
-    const navLinks = document.querySelectorAll('.nav');
-    navLinks.forEach(link => link.classList.remove('active'));
-
-    // Add active class to the current section's nav link
     if (currentSection) {
-      const activeLink = document.querySelector(`a.nav[href="#${currentSection}"]`);
-      if (activeLink) {
-        activeLink.classList.add('active');
-      }
-      }
-      };
+      setActiveSection(currentSection);
+    }
+  };
     
   
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-
-
-
+  const handleClick = (section) => {
+    setActiveSection(section); 
+    setIsMenuOpen(false); 
+  };
 
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-shadow ${isScrolled ? 'shadow-md' : ''}`}>
-      <nav className="flex justify-between items-center p-4 md:p-6">
-        <h1 className="text-2xl md:text-4xl font-bold text-gray-900 ml-1">Hemanta Thapa</h1>
+       <nav className="flex items-center px-6 py-4 p-4 md:px-10 lg:px-20 xl:px-40 max-w-7xl mx-auto">
+          <div className="text-2xl font-bold text-gray-900 tracking-wide mr-auto" style={{ fontFamily: 'serif' }}>
+              HT
+            </div>
 
-        {/* Navigation for small screens (icons) and large screens (text) */}
-        <ul className="flex space-x-4 mr-5">
-          <li>
-            <a href="#home" className="md:hidden">
-              <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home" className="w-6 h-6" />
-            </a>
-            <a href="#home" className="hidden active nav p-1 md:inline-block ">Home</a>
-          </li>
-          <li>
-            <a href="#about" className="md:hidden">
-              <img src={about} alt="About" className="w-6 h-6" />
-            </a>
-            <a href="#about" className="hidden nav p-1 md:inline-block">About</a>
-          </li>
-          
-          <li>
-            <a href="#experience" className="md:hidden">
-              <img src={work} alt="Experience" className="w-6 h-6" />
-            </a>
-            <a href="#experience" className="hidden nav p-1 md:inline-block">Experience</a>
-          </li>
-          <li>
-            <a href="#projects" className="md:hidden">
-
-              <img src={projects} alt="Projects" className="w-6 h-6" />
-            </a>
-            <a href="#projects" className="hidden nav p-1 md:inline-block ">Projects</a>
-          </li>
-          <li>
-            <a href="#skills" className="md:hidden">
-              <img src={skills} alt="Skills" className="w-6 h-6" />
-            </a>
-            <a href="#skills" className="hidden nav p-1 md:inline-block">Skills</a>
-          </li>
-          <li>
-            <a href="#contact" className="md:hidden">
-              <img src={skills} alt="Skills" className="w-6 h-6" />
-            </a>
-            <a href="#contact" className="hidden nav p-1 md:inline-block">Contact</a>
-          </li>
+         <ul className="hidden md:flex space-x-8 ml-auto">
+           {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
+            <li key={item.toLowerCase()}>
+              <a 
+                href={`#${item.toLowerCase()}`} 
+                className={`nav text-lg px-4 py-2 ${activeSection === item.toLowerCase() ? 'active' : ''} text-gray-900 hover:text-purple-500 transition-colors duration-200`}
+                onClick={() => handleClick(item.toLowerCase())} // Update active section on click
+              >
+                {item}
+              </a>
+            </li>
+          ))}
         </ul>
+
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-2xl">
+            <FaBars />
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="absolute top-16 left-0 w-full bg-white shadow-md z-40">
+            <ul className="flex flex-col items-center space-y-4 p-6">
+              {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
+                <li key={item.toLowerCase()}>
+                  <a 
+                    href={`#${item.toLowerCase()}`} 
+                    className={`nav text-lg ${activeSection === item.toLowerCase() ? 'active' : ''} text-gray-900 hover:text-purple-500 transition-colors duration-200`}
+                    onClick={() => handleClick(item.toLowerCase())} // Update active section on click
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      
       </nav>
-    </header>
+     </header>
   );
 };
 
