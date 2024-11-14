@@ -7,9 +7,9 @@ const Home = () => {
   return (
     <section id="home" className="relative min-h-screen flex flex-col md:flex-col lg:flex-row items-center justify-between px-8 bg-gray-50">
       
-      <div className="absolute w-72 h-72 bg-blue-300 opacity-20 rounded-full -top-10 -left-20 animate-pulse"></div>
-      <div className="absolute w-96 h-96 bg-purple-300 opacity-20 rounded-full -bottom-20 -right-20 animate-pulse"></div>
-      <div className="absolute w-64 h-64 bg-blue-200 opacity-30 rounded-full top-1/3 -right-10 animate-pulse"></div>
+      <div className="absolute w-64 h-64 bg-blue-300 opacity-20 rounded-full top-10 -left-20 animate-pulse"></div>
+      <div className="absolute w-80 h-80 bg-purple-300 opacity-20 rounded-full top-30 left-1/4 animate-pulse"></div>
+      <div className="absolute w-64 h-64 bg-blue-300 opacity-20 rounded-full -bottom-10 -right-5 animate-pulse"></div>
 
      {/* Left: Name and Job Title */}
       <div className="flex flex-col items-start lg:items-start w-full lg:w-1/3  lg:mb-0 text-center lg:text-left ">
