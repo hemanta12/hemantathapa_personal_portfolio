@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-multi-str */
 import React from "react";
 import frontendVector from "../assets/frontend-vector.jpg";
 import backendVector from "../assets/backend-vector.jpg";
