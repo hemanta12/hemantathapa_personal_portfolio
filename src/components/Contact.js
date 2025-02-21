@@ -114,7 +114,7 @@ const Contact = () => {
               className="text-lg font-medium text-blue-800 hover:text-blue-600 transition-colors duration-200"
               aria-label="Call me"
             >
-              341-203-3291
+              510-730-2994
             </a>
             <button
               onClick={copyPhone}
