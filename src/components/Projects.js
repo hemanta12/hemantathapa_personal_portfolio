@@ -1,24 +1,30 @@
-import React from 'react';
-import carrace from '../assets/car-race.png';
-import dumpnotes from '../assets/dumpnotes.png';
+import React from "react";
+import carrace from "../assets/car-race.png";
+import dumpnotes from "../assets/dumpnotes.png";
+import trackmyfinance from "../assets/trackmyfinance-dashboard.png";
 
 const projects = [
   {
-    title: 'Car Race',
-    description: '2d car race',
+    title: "Car Race",
+    description: "2d car race",
     image: carrace,
-    liveLink: 'https://thapahemantcarracejs.netlify.app',
-    githubLink: 'https://github.com/hemanta12/car-race-js'
+    liveLink: "https://thapahemantcarracejs.netlify.app",
+    githubLink: "https://github.com/hemanta12/car-race-js",
   },
   {
-    title: 'Dumpnotes',
-    description: 'Simple note writing website',
+    title: "Dumpnotes",
+    description: "Simple note writing website",
     image: dumpnotes,
-    liveLink: 'https://dumpnotess.netlify.app',
-    githubLink: 'https://github.com/hemanta12/DumpNotes'
+    liveLink: "https://dumpnotess.netlify.app",
+    githubLink: "https://github.com/hemanta12/DumpNotes",
   },
-  
- 
+  {
+    title: "TrackMyFinance",
+    description: "Personal Finance Tracker",
+    image: trackmyfinance,
+    liveLink: "https://track-my-finance.vercel.app",
+    githubLink: "https://github.com/hemanta12/trackYourFinance",
+  },
 ];
 
 const Projects = () => {
