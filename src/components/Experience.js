@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { FiCode, FiChevronDown } from "react-icons/fi";
 
 const experiences = [
   {
@@ -48,58 +49,105 @@ const experiences = [
 ];
 
 const Experience = () => {
+  useEffect(() => {
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+            entry.target.classList.remove("opacity-0", "translate-y-6");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    fadeElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="experience"
-      className="min-h-screen flex flex-col items-center py-16 bg-gray-50 scroll-mt-10"
+      className="min-h-screen flex flex-col items-center py-16  dark:bg-gray-900 scroll-mt-10"
     >
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-12 mt-10 text-gray-800 text-center">
+        <h2
+          className="text-5xl bg-clip-text mb-16 font-extrabold text-gray-900 dark:text-white text-center 
+                    fade-in opacity-0 translate-y-6 transition-opacity transition-transform duration-700"
+        >
           Work Experience
         </h2>
+        <hr className="w-48 border-gray-300 dark:border-gray-600 mx-auto mb-12" />
 
         <div className="relative">
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-blue-500"></div>
+          {/* Gradient Timeline Line */}
+          <div
+            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-2
+                       bg-gradient-to-b from-purple-400 to-pink-600 rounded"
+          />
 
           {experiences.map((exp, index) => {
             const isEven = index % 2 === 0;
             return (
               <div
-                key={exp.id}
-                className={`mb-12 flex flex-col items-center md:flex-row ${
+                key={exp.company + exp.duration}
+                className={`mb-16 flex flex-col items-center md:flex-row fade-in opacity-0 translate-y-6 transition-opacity transition-transform duration-700 ${
                   isEven ? "" : "md:flex-row-reverse"
                 }`}
               >
-                {/* Left Side (Date and Role) */}
+                {/* Left Side (Date & Role) */}
                 <div
-                  className={`md:w-1/2 text-center md:text-center ${
-                    isEven ? "md:pr-8" : "md:pl-8"
+                  className={`md:w-1/2 text-center md:text-right ${
+                    isEven ? "md:pr-12" : "md:pl-12"
                   }`}
                 >
-                  <p className="text-blue-500 font-semibold mb-2">
+                  <p
+                    className="text-lg font-semibold mb-2
+                               bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600"
+                  >
                     {exp.duration}
                   </p>
-                  <h3 className="text-2xl font-bold text-gray-800">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-gray-100">
                     {exp.role}
                   </h3>
-                  <p className="text-gray-600">{exp.company}</p>
+                  <p className="text-gray-600 dark:text-gray-300 tracking-wide mt-1">
+                    {exp.company}
+                  </p>
                 </div>
 
                 {/* Center Dot */}
-                <div className="w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-md z-10 mt-6 md:mt-0"></div>
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full border-4 border-white shadow-md z-10 mt-4 md:mt-0" />
 
-                {/* Right Side (Content) */}
+                {/* Right Side (Details Card) */}
                 <div
-                  className={`md:w-1/2 mt-6 md:mt-0 text-center md:text-left ${
-                    isEven ? "md:pl-8" : "md:pr-8"
+                  className={`md:w-1/2 mt-6 md:mt-0 ${
+                    isEven ? "md:pl-12" : "md:pr-12"
                   }`}
                 >
-                  <div className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
-                    {/* Items */}
-                    <ul className="space-y-4 text-gray-700">
+                  <div className="relative  bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-lg dark:shadow-white-700/50 duration-300">
+                    {/* Gradient Stripe on Left Edge */}
+                    <div
+                      className="absolute inset-y-0 left-0 w-1 bg-gradient-to-br from-purple-400 to-pink-600 rounded-l"
+                      aria-hidden="true"
+                    />
+
+                    {/* Items List */}
+                    <ul className="space-y-6 text-gray-700 dark:text-gray-300 ">
                       {exp.items.map((item, idx) => (
-                        <li key={idx}>
-                          <strong>{item.title}:</strong> {item.description}
+                        <li key={idx} className="flex items-start space-x-3">
+                          <FiCode className="mt-1 text-purple-500 flex-shrink-0 w-5 h-5" />
+                          <div>
+                            <p className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                              {item.title}
+                            </p>
+                            <p className="leading-snug dark:text-gray-200">
+                              {item.description}
+                            </p>
+                          </div>
                         </li>
                       ))}
                     </ul>
@@ -108,6 +156,12 @@ const Experience = () => {
               </div>
             );
           })}
+        </div>
+
+        <div className="flex justify-center pt-6">
+          <a href="#skills">
+            <FiChevronDown className="w-8 h-8 text-gray-500 dark:text-gray-400 animate-bounce" />
+          </a>
         </div>
       </div>
     </section>
