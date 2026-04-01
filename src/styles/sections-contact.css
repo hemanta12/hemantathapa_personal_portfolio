@@ -1,0 +1,440 @@
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 72px 56px 64px;
+  border-top: 1px solid var(--border);
+}
+
+.contact-bg-word {
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  transform: translateX(-50%);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 200px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: rgba(11, 21, 32, 0.025);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.contact-section > *:not(.contact-bg-word) {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-eyebrow {
+  margin: 0 0 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Geist", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9aafc4;
+}
+
+.contact-eyebrow::before,
+.contact-eyebrow::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: rgba(154, 175, 196, 0.62);
+}
+
+.contact-heading {
+  margin: 0 0 6px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #0b1520;
+}
+
+.contact-heading span {
+  font-weight: 300;
+  font-style: italic;
+  color: #2e4a62;
+}
+
+.contact-copy {
+  margin: 0 0 36px;
+  max-width: 440px;
+  font-family: "Geist", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #5b7a9b;
+}
+
+.contact-copy strong {
+  font-weight: 500;
+  color: #0b1520;
+}
+
+.availability-pill {
+  margin-bottom: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 100px;
+  padding: 6px 14px;
+  background: #e3e8ef;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #4a7ab5;
+}
+
+.avail-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4a7ab5;
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+.contact-content {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.contact-content > * {
+  width: 100%;
+}
+
+.contact-social-wrap {
+  width: 100%;
+  max-width: 580px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(11, 21, 32, 0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+}
+
+.contact-social-wrap > div {
+  flex: 1;
+}
+
+.contact-social-wrap > div:not(:last-child) {
+  border-right: 1px solid rgba(11, 21, 32, 0.08);
+}
+
+.contact-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 100%;
+  padding: 22px 16px;
+  text-decoration: none;
+  background: #f6f7f5;
+  transition:
+    background-color 0.18s ease-out,
+    color 0.18s ease-out;
+}
+
+.contact-tile:hover {
+  background: #eff2f7;
+}
+
+.contact-tile__arrow {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  color: #c0cedb;
+  transition:
+    color 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+
+.contact-tile__arrow svg {
+  width: 10px;
+  height: 10px;
+}
+
+.contact-tile:hover .contact-tile__arrow {
+  color: #4a7ab5;
+  transform: translate(2px, -2px);
+}
+
+.contact-tile__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+}
+
+.contact-tile__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-tile__icon--email {
+  background: #1c3348;
+  color: #7ab5e8;
+}
+
+.contact-tile__icon--linkedin {
+  background: #003a6b;
+  color: #5ba4cf;
+}
+
+.contact-tile__icon--github {
+  background: #161b22;
+  color: #c9d1d9;
+}
+
+.contact-tile__label {
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0b1520;
+}
+
+.contact-tile__handle {
+  font-family: "Geist", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: #8296aa;
+}
+
+.contact-resume-card {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border: 1px solid rgba(11, 21, 32, 0.09);
+  border-radius: 10px;
+  background: #f6f7f5;
+}
+
+.contact-resume__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.contact-resume__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #e3e8ef;
+  color: #4a6880;
+  display: grid;
+  place-items: center;
+}
+
+.contact-resume__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-resume__title {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0b1520;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-resume__actions {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resume-btn {
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease-out,
+    opacity 0.18s ease-out,
+    color 0.18s ease-out;
+}
+
+.resume-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.resume-btn--view {
+  background: #e3e8ef;
+  color: #4a6880;
+}
+
+.resume-btn--view:hover {
+  background: #d4dce8;
+}
+
+.resume-btn--download {
+  background: #0b1520;
+  color: #f6f7f5;
+}
+
+.resume-btn--download:hover {
+  opacity: 0.82;
+}
+
+.resume-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 21, 32, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.resume-modal-panel {
+  background: #f6f7f5;
+  border-radius: 12px;
+  width: min(980px, 96vw);
+  height: 92vh;
+  max-height: 92vh;
+  overflow: hidden;
+  border: 1px solid rgba(11, 21, 32, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.resume-modal-title {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0b1520;
+}
+
+.resume-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resume-modal-close {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(11, 21, 32, 0.12);
+  border-radius: 6px;
+  background: transparent;
+  color: #4a6880;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease-out,
+    color 0.18s ease-out;
+}
+
+.resume-modal-close:hover {
+  background: #e3e8ef;
+}
+
+.resume-modal-close svg {
+  width: 15px;
+  height: 15px;
+}
+
+.resume-modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px;
+}
+
+.resume-modal-body iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.resume-modal-placeholder {
+  height: 100%;
+  min-height: 320px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 8px;
+  color: #4a6880;
+}
+
+.resume-modal-placeholder__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #e3e8ef;
+  display: grid;
+  place-items: center;
+}
+
+.resume-modal-placeholder__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.resume-modal-placeholder__file {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0b1520;
+}
+
+.resume-modal-placeholder__note {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #5b7a9b;
+}

@@ -1,0 +1,365 @@
+.featured-project__links,
+.project-card__links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.featured-project__links {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.project-link {
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.project-link svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.project-link--live {
+  background: #1c3348;
+  color: #f6f7f5;
+  border: 1px solid #1c3348;
+  box-shadow: 0 2px 8px rgba(11, 21, 32, 0.22);
+}
+
+.project-link--live:hover,
+.project-link--live:focus-visible {
+  background: #243f58;
+  border-color: #243f58;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11, 21, 32, 0.28);
+}
+
+.project-link--github {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-hover);
+}
+
+.project-link--github:hover,
+.project-link--github:focus-visible {
+  background: var(--bg-surface);
+  border-color: var(--bg-dark);
+  transform: translateY(-1px);
+}
+
+.project-link:focus-visible {
+  outline: 2px solid rgba(122, 181, 232, 0.6);
+  outline-offset: 2px;
+}
+
+.project-link.is-disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.more-builds {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 44px 0 24px;
+}
+
+.more-builds span {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-mid);
+}
+
+.more-builds div {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.project-card {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-card__thumb {
+  height: 176px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 26px;
+  font-family: "Cormorant Garamond", serif;
+  overflow: hidden;
+}
+
+.project-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  flex: 1;
+}
+
+.project-card__badge {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+
+.project-card__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.project-card__title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+}
+
+.project-card__description {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.project-card__links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.about-exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.about-col {
+  border-right: 1px solid var(--border);
+  padding-right: 52px;
+}
+
+.exp-col {
+  padding-left: 52px;
+}
+
+.pull-quote {
+  margin: 0 0 28px;
+  padding-left: 20px;
+  position: relative;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(24px, 3.1vw, 34px);
+  line-height: 1.35;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-dim);
+}
+
+.pull-quote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.4;
+  border-radius: 1px;
+}
+
+.bio-copy p {
+  margin: 0 0 16px;
+  color: var(--text-secondary);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+
+.eyebrow--line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow--experience {
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+.eyebrow--line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.eyebrow--experience::after {
+  background: rgba(11, 21, 32, 0.22);
+}
+
+.interest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.interest-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.interest-item__icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--accent-mid);
+}
+
+.interest-item__name,
+.interest-item__sub {
+  margin: 0;
+}
+
+.interest-item__name {
+  font-weight: 500;
+}
+
+.interest-item__sub {
+  color: var(--text-secondary);
+}
+
+.exp-timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.exp-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--border);
+}
+
+.exp-entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-entry__dot {
+  position: absolute;
+  left: -32px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--accent);
+}
+
+.exp-entry__period,
+.exp-entry__company,
+.exp-entry__role,
+.exp-entry__bullets {
+  margin: 0;
+}
+
+.exp-entry__period {
+  color: var(--text-faint);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.exp-entry__company {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.exp-entry__role {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--accent-mid);
+}
+
+.exp-entry__bullets {
+  padding-left: 18px;
+  color: var(--text-secondary);
+}
+
+.exp-entry__bullets li {
+  margin-bottom: 8px;
+}
+
+.exp-divider {
+  width: calc(100% - 28px);
+  height: 1px;
+  background: var(--border);
+  margin: 0 0 36px 28px;
+}
