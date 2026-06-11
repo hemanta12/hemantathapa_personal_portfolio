@@ -1,5 +1,5 @@
 import carRaceImage from "../assets/car-race.png";
-import dumpnotesImage from "../assets/dumpnotes.png";
+import calculatorPreviewImage from "../assets/calculator-preview.png";
 import resumePdf from "../assets/Hemanta_thapa_Resume_2026_base.pdf";
 import profileImage from "../assets/hero.jpg";
 import trackMyFinanceImage from "../assets/trackmyfinance-dashboard.png";
@@ -118,6 +118,7 @@ export const navLinks: NavItem[] = [
   { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
+  { label: "Tools", href: "/tools" },
 ];
 
 export const hero: HeroContent = {
@@ -185,16 +186,16 @@ export const work: WorkContent = {
       image: trackMyFinanceImage,
     },
     {
-      title: "Dumpnotes",
-      category: "Shipped build",
+      title: "Compound Growth Calculator",
+      category: "Tool",
       description:
-        "A minimalist note-taking app with user authentication and live syncing.",
-      tags: ["React", "Firebase", "CSS"],
-      github: "",
-      live: "",
-      icon: "✎",
+        "Side-by-side compound interest simulator with inflation adjustment and retirement visualization.",
+      tags: ["React", "TypeScript", "Recharts", "Tailwind CSS"],
+      github: "https://github.com/hemanta12/compound-calculator",
+      live: "/tools",
+      icon: "📈",
       color: "#243040",
-      image: dumpnotesImage,
+      image: calculatorPreviewImage,
     },
     {
       title: "Car Race",

@@ -32,7 +32,7 @@ const Work = (): JSX.Element => {
 
       <div className="project-grid">
         {work.grid.map((project, index) => (
-          <ScrollReveal key={project.title} delay={index * 80}>
+          <ScrollReveal key={project.title} delay={index * 80} className="flex flex-col h-full">
             <ProjectCard project={project} />
           </ScrollReveal>
         ))}

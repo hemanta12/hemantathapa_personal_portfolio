@@ -81,8 +81,8 @@ const ProjectCard = ({ project }: ProjectCardProps): JSX.Element => {
           <a
             href={liveHref || "#"}
             className={`project-link project-link--live${liveHref ? "" : " is-disabled"}`}
-            target={liveHref ? "_blank" : undefined}
-            rel={liveHref ? "noopener noreferrer" : undefined}
+            target={liveHref && !liveHref.startsWith("/") ? "_blank" : undefined}
+            rel={liveHref && !liveHref.startsWith("/") ? "noopener noreferrer" : undefined}
             aria-disabled={!liveHref}
             tabIndex={liveHref ? undefined : -1}
             onClick={(event) => {
