@@ -44,7 +44,7 @@ const FeaturedProject = ({
     >
       <motion.div
         className="featured-project__image-wrap"
-        style={{ background: project.imageLight ? "#d4dce8" : "#1c3348" }}
+        style={{ background: project.imageLight ? "#E2E8F0" : "#1E293B" }}
         initial="rest"
         whileHover={prefersReducedMotion ? "rest" : "hover"}
         animate="rest"

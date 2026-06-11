@@ -1,7 +1,7 @@
 import type { Scenario } from '../types'
 
 /** Scenario accent colors, assigned by slot (mirror the @theme tokens). */
-export const SCENARIO_COLORS = ['#4f46e5', '#0d9488', '#d97706'] as const
+export const SCENARIO_COLORS = ['#4f46e5', '#06b6d4', '#f59e0b'] as const
 
 export const MAX_SCENARIOS = 3
 export const DEFAULT_INFLATION = 3 // percent, used when the toggle is on

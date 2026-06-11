@@ -60,7 +60,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(30px, 3.3vw, 44px);
   line-height: 1;
-  color: rgba(46, 74, 98, 0.45);
+  color: rgba(79, 70, 229, 0.25);
 }
 
 .hero-belief::before {
@@ -97,7 +97,7 @@
   margin: 0 clamp(10px, 1.8vw, 22px);
   border-radius: 50%;
   border: 3px solid var(--bg);
-  background: #1c3348;
+  background: var(--bg-dark);
   position: relative;
   top: clamp(4px, 0.8vw, 10px);
   overflow: hidden;
@@ -116,7 +116,7 @@
   font-size: 30px;
   font-style: italic;
   font-weight: 300;
-  color: rgba(246, 247, 245, 0.75);
+  color: var(--text-muted);
 }
 
 .hero-ctas {
@@ -152,9 +152,9 @@
 }
 
 .hero-cta--filled {
-  background: var(--bg-dark);
-  color: var(--bg);
-  border: 1px solid var(--bg-dark);
+  background: var(--accent-dim);
+  color: #FFFFFF;
+  border: 1px solid var(--accent-dim);
 }
 
 .hero-cta--outline {
@@ -213,7 +213,7 @@
 }
 
 .role-text--right {
-  color: #6b5db5;
+  color: var(--accent-mid);
 }
 
 .role-transition-canvas {
@@ -242,14 +242,14 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #8296aa;
+  color: var(--text-muted);
 }
 
 .ask-hemanta__input-row {
   display: flex;
   align-items: center;
-  background: #ffffff;
-  border: 1px solid rgba(11, 21, 32, 0.12);
+  background: var(--bg);
+  border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
   transition:
@@ -258,8 +258,8 @@
 }
 
 .ask-hemanta__input-row:focus-within {
-  border-color: rgba(74, 104, 128, 0.45);
-  box-shadow: 0 0 0 3px rgba(74, 104, 128, 0.08);
+  border-color: var(--accent-mid);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
 }
 
 .ask-hemanta__input {
@@ -271,11 +271,11 @@
   font-family: "Geist", sans-serif;
   font-size: 14px;
   font-weight: 300;
-  color: #0b1520;
+  color: var(--text-primary);
 }
 
 .ask-hemanta__input::placeholder {
-  color: #b0c0cf;
+  color: var(--text-muted);
 }
 
 .ask-hemanta__send {
@@ -285,7 +285,7 @@
   margin: 4px;
   border: none;
   border-radius: 7px;
-  background: #e3e8ef;
+  background: var(--chip-bg);
   cursor: pointer;
   display: grid;
   place-items: center;
@@ -293,7 +293,7 @@
 }
 
 .ask-hemanta__send:hover {
-  background: #d4dce8;
+  background: var(--bg-dark);
 }
 
 .ask-hemanta__chips {
@@ -304,14 +304,14 @@
 }
 
 .ask-hemanta__chip {
-  background: #e3e8ef;
+  background: var(--chip-bg);
   border: 1px solid transparent;
   border-radius: 100px;
   padding: 5px 12px;
   font-family: "Geist", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #4a6880;
+  color: var(--text-secondary);
   cursor: pointer;
   transition:
     background-color 0.15s ease,
@@ -321,15 +321,15 @@
 
 .ask-hemanta__chip:hover,
 .ask-hemanta__chip--active {
-  background: #d4dce8;
-  border-color: rgba(74, 104, 128, 0.3);
-  color: #0b1520;
+  background: var(--bg-dark);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
 }
 
 .ask-hemanta__response {
-  background: #eff2f7;
+  background: var(--bg-surface);
   border-radius: 8px;
-  border-left: 2px solid #4a7ab5;
+  border-left: 2px solid var(--accent);
   padding: 14px 16px;
   margin-top: 12px;
 }
@@ -343,14 +343,14 @@
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #8296aa;
+  color: var(--text-muted);
 }
 
 .ask-hemanta__response-dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #4a7ab5;
+  background: var(--accent);
   flex-shrink: 0;
 }
 
@@ -359,13 +359,13 @@
   font-family: "Geist", sans-serif;
   font-size: 14px;
   font-weight: 300;
-  color: #3d5872;
+  color: var(--text-secondary);
   line-height: 1.75;
 }
 
 .ask-hemanta__response-text .hl {
-  background: rgba(74, 122, 181, 0.12);
-  color: #1a2e42;
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--text-primary);
   font-weight: 500;
   border-radius: 3px;
   padding: 0 3px;
@@ -390,7 +390,7 @@
   font-size: 15px;
   font-style: italic;
   font-weight: 300;
-  color: #7a93a8;
+  color: var(--text-secondary);
   line-height: 1.55;
   letter-spacing: 0.01em;
 }
@@ -399,7 +399,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: 30px;
   font-weight: 700;
-  color: rgba(74, 104, 128, 0.2);
+  color: var(--text-faint);
   line-height: 0;
   vertical-align: -12px;
   margin-right: 6px;
@@ -416,18 +416,18 @@
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #9aafc4;
+  color: var(--text-muted);
 }
 
 @keyframes pulse-dot {
   0%,
   100% {
     opacity: 1;
-    box-shadow: 0 0 0 0 rgba(74, 122, 181, 0.4);
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
   }
   50% {
     opacity: 0.6;
-    box-shadow: 0 0 0 5px rgba(74, 122, 181, 0);
+    box-shadow: 0 0 0 5px rgba(79, 70, 229, 0);
   }
 }
 
@@ -501,7 +501,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: rgba(11, 21, 32, 0.15);
+  background: rgba(15, 23, 42, 0.08);
 }
 
 .featured-project__content {
@@ -544,4 +544,23 @@
 
 .featured-project__content .chip-row {
   align-self: flex-start;
+}
+.hero-visual-anchor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: radial-gradient(
+    circle,
+    var(--accent) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  opacity: 0.08;
+  z-index: -1;
+  pointer-events: none;
 }

@@ -1,23 +1,23 @@
 :root {
-  --bg: #f6f7f5;
-  --bg-surface: #eff2f7;
-  --bg-dark: #0b1520;
-  --bg-card: #e3e8ef;
+  --bg: #FFFFFF;
+  --bg-surface: #F8FAFC;
+  --bg-dark: #F1F5F9;
+  --bg-card: #F8FAFC;
 
-  --text-primary: #0b1520;
-  --text-secondary: #4a6b87;
-  --text-muted: #536d8a;
-  --text-faint: #587285;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-faint: #64748B;
 
-  --accent: #4a7ab5;
-  --accent-dim: #2e4a62;
-  --accent-mid: #4a6880;
+  --accent: #4F46E5;
+  --accent-dim: #4338CA;
+  --accent-mid: #6366F1;
 
-  --border: rgba(11, 21, 32, 0.12);
-  --border-hover: rgba(11, 21, 32, 0.22);
+  --border: rgba(15, 23, 42, 0.1);
+  --border-hover: rgba(15, 23, 42, 0.2);
 
-  --chip-bg: #e3e8ef;
-  --chip-text: #3d5672;
+  --chip-bg: #F1F5F9;
+  --chip-text: #475569;
 }
 
 * {
@@ -63,6 +63,11 @@ img {
   outline-offset: 3px;
 }
 
+.outline-none:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 main {
   overflow: hidden;
 }
@@ -78,34 +83,41 @@ main {
 
 .section-header {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 16px;
-  margin-bottom: 48px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 64px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-header__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .section-title {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: 44px;
-  line-height: 1;
+  font-size: 56px;
+  line-height: 1.1;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .section-title em {
   font-style: italic;
   font-weight: 300;
-  color: var(--accent-dim);
+  color: var(--accent);
 }
 
-.section-label {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
+.section-label-inline {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  letter-spacing: 0;
+  text-transform: none;
 }

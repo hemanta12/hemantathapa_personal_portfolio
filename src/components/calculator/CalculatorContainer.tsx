@@ -148,7 +148,7 @@ export default function CalculatorContainer() {
     'w-14 rounded-md border border-line bg-white/80 px-2 py-1 text-center text-sm font-medium text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/15'
 
   return (
-    <div className="min-h-svh">
+    <div className="min-h-svh bg-bg">
       <main className="mx-auto w-full max-w-6xl px-4 pt-7 pb-10 sm:px-6 sm:pt-9 sm:pb-12">
         <Header />
 

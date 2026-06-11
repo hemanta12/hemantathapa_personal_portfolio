@@ -107,8 +107,8 @@ export type NavItem = {
 export const site: SiteContent = {
   name: "Hemanta Thapa",
   email: "thapahemanta.dev@gmail.com",
-  linkedin: "https://linkedin.com/in/hemantathapa",
-  github: "https://github.com/hemantathapa",
+  linkedin: "https://www.linkedin.com/in/thapahemanta/",
+  github: "https://github.com/hemanta12",
   resume: resumePdf,
 };
 
@@ -156,7 +156,7 @@ export const work: WorkContent = {
       image: sasabrowsImage,
       live: "https://sasaeyebrowsthreading.com",
       github: "",
-      imageLight: false,
+      imageLight: true,
     },
     {
       index: "02",
@@ -167,8 +167,8 @@ export const work: WorkContent = {
         "Mobile-first SPA built for conversion. Custom Light/Dark theme with localStorage persistence, honeypot spam mitigation on lead capture, and component architecture targeting 90+ Lighthouse scores across performance and accessibility.",
       tags: ["React", "Vite", "Tailwind CSS", "React Router", "JavaScript"],
       image: smsImage,
-      live: "",
-      github: "https://swiftmodernsolutions.com",
+      live: "https://swiftmodernsolutions.com/",
+      github: "",
       imageLight: true,
     },
   ],

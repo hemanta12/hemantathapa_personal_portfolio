@@ -53,9 +53,9 @@ const LAND_RADIUS = 9;
 
 // Trail drawing constants
 const TRAIL_COLORS = {
-  phase1: "rgba(74,104,128,",
-  phase2: "rgba(107,93,181,",
-  phase3: "rgba(107,93,181,",
+  phase1: "rgba(99,102,241,",
+  phase2: "rgba(79,70,229,",
+  phase3: "rgba(79,70,229,",
 } as const;
 
 const TRAIL_MAX_LENGTHS = { phase1: 18, phase2: 14, phase3: 14 } as const;
@@ -98,7 +98,7 @@ function drawBall(
   ctx.translate(x, y);
   ctx.rotate(spin);
 
-  ctx.shadowColor = "rgba(11,21,32,0.15)";
+  ctx.shadowColor = "rgba(15,23,42,0.15)";
   ctx.shadowBlur = 4;
   const d = radius * 2;
   ctx.drawImage(ballImage, -radius, -radius, d, d);
@@ -347,7 +347,7 @@ const RoleTransition = ({ showPhoto = true }: Props): JSX.Element => {
 
           ctxRef.beginPath();
           ctxRef.arc(photoX, photoY, orbitR, Math.PI, angle);
-          ctxRef.strokeStyle = "rgba(107,93,181,0.25)";
+          ctxRef.strokeStyle = "rgba(79,70,229,0.25)";
           ctxRef.lineWidth = 1.5;
           ctxRef.stroke();
 
@@ -392,7 +392,7 @@ const RoleTransition = ({ showPhoto = true }: Props): JSX.Element => {
 
           ctxRef.beginPath();
           ctxRef.arc(photoX, photoY, orbitR, 0, Math.PI * 2);
-          ctxRef.strokeStyle = "rgba(107,93,181,0.15)";
+          ctxRef.strokeStyle = "rgba(79,70,229,0.15)";
           ctxRef.lineWidth = 1.5;
           ctxRef.stroke();
 

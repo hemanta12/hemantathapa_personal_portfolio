@@ -14,7 +14,7 @@
 }
 
 .site-nav.is-scrolled {
-  background: rgba(246, 247, 245, 0.92);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -42,7 +42,7 @@
 .site-nav__toggle {
   display: none;
   border: 1px solid var(--border);
-  background: rgba(246, 247, 245, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   color: var(--text-primary);
   border-radius: 999px;
   width: 40px;

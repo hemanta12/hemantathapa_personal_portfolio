@@ -19,7 +19,7 @@
   line-height: 0.85;
   letter-spacing: -0.04em;
   font-weight: 700;
-  color: rgba(11, 21, 32, 0.025);
+  color: rgba(15, 23, 42, 0.025);
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -41,7 +41,7 @@
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #9aafc4;
+  color: var(--text-muted);
 }
 
 .contact-eyebrow::before,
@@ -49,7 +49,8 @@
   content: "";
   width: 24px;
   height: 1px;
-  background: rgba(154, 175, 196, 0.62);
+  background: var(--text-muted);
+  opacity: 0.4;
 }
 
 .contact-heading {
@@ -59,13 +60,13 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.025em;
-  color: #0b1520;
+  color: var(--text-primary);
 }
 
 .contact-heading span {
   font-weight: 300;
   font-style: italic;
-  color: #2e4a62;
+  color: var(--accent-dim);
 }
 
 .contact-copy {
@@ -75,12 +76,12 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.8;
-  color: #5b7a9b;
+  color: var(--text-secondary);
 }
 
 .contact-copy strong {
   font-weight: 500;
-  color: #0b1520;
+  color: var(--text-primary);
 }
 
 .availability-pill {
@@ -90,18 +91,18 @@
   gap: 7px;
   border-radius: 100px;
   padding: 6px 14px;
-  background: #e3e8ef;
+  background: var(--chip-bg);
   font-family: "Geist", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #4a7ab5;
+  color: var(--accent);
 }
 
 .avail-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #4a7ab5;
+  background: var(--accent);
   animation: pulse-dot 2.5s ease-in-out infinite;
 }
 
@@ -122,7 +123,7 @@
   width: 100%;
   max-width: 580px;
   margin-bottom: 12px;
-  border: 1px solid rgba(11, 21, 32, 0.09);
+  border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -133,7 +134,7 @@
 }
 
 .contact-social-wrap > div:not(:last-child) {
-  border-right: 1px solid rgba(11, 21, 32, 0.08);
+  border-right: 1px solid var(--border);
 }
 
 .contact-tile {
@@ -146,21 +147,21 @@
   min-height: 100%;
   padding: 22px 16px;
   text-decoration: none;
-  background: #f6f7f5;
+  background: var(--bg);
   transition:
     background-color 0.18s ease-out,
     color 0.18s ease-out;
 }
 
 .contact-tile:hover {
-  background: #eff2f7;
+  background: var(--bg-surface);
 }
 
 .contact-tile__arrow {
   position: absolute;
   top: 11px;
   right: 11px;
-  color: #c0cedb;
+  color: var(--text-faint);
   transition:
     color 0.18s ease-out,
     transform 0.18s ease-out;
@@ -172,7 +173,7 @@
 }
 
 .contact-tile:hover .contact-tile__arrow {
-  color: #4a7ab5;
+  color: var(--accent);
   transform: translate(2px, -2px);
 }
 
@@ -190,32 +191,32 @@
 }
 
 .contact-tile__icon--email {
-  background: #1c3348;
-  color: #7ab5e8;
+  background: var(--accent-dim);
+  color: #FFFFFF;
 }
 
 .contact-tile__icon--linkedin {
-  background: #003a6b;
-  color: #5ba4cf;
+  background: #0A66C2;
+  color: #FFFFFF;
 }
 
 .contact-tile__icon--github {
-  background: #161b22;
-  color: #c9d1d9;
+  background: var(--text-primary);
+  color: var(--bg);
 }
 
 .contact-tile__label {
   font-family: "Geist", sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #0b1520;
+  color: var(--text-primary);
 }
 
 .contact-tile__handle {
   font-family: "Geist", sans-serif;
   font-size: 11px;
   font-weight: 300;
-  color: #8296aa;
+  color: var(--text-secondary);
 }
 
 .contact-resume-card {
@@ -225,9 +226,9 @@
   align-items: center;
   gap: 14px;
   padding: 16px 20px;
-  border: 1px solid rgba(11, 21, 32, 0.09);
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: #f6f7f5;
+  background: var(--bg-surface);
 }
 
 .contact-resume__info {
@@ -242,8 +243,8 @@
   width: 38px;
   height: 38px;
   border-radius: 8px;
-  background: #e3e8ef;
-  color: #4a6880;
+  background: var(--chip-bg);
+  color: var(--accent);
   display: grid;
   place-items: center;
 }
@@ -258,7 +259,7 @@
   font-family: "Geist", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #0b1520;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -296,17 +297,17 @@
 }
 
 .resume-btn--view {
-  background: #e3e8ef;
-  color: #4a6880;
+  background: var(--chip-bg);
+  color: var(--text-secondary);
 }
 
 .resume-btn--view:hover {
-  background: #d4dce8;
+  background: var(--bg-dark);
 }
 
 .resume-btn--download {
-  background: #0b1520;
-  color: #f6f7f5;
+  background: var(--accent-dim);
+  color: #FFFFFF;
 }
 
 .resume-btn--download:hover {
@@ -316,7 +317,7 @@
 .resume-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(11, 21, 32, 0.6);
+  background: rgba(15, 23, 42, 0.6);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -325,13 +326,13 @@
 }
 
 .resume-modal-panel {
-  background: #f6f7f5;
+  background: var(--bg);
   border-radius: 12px;
   width: min(980px, 96vw);
   height: 92vh;
   max-height: 92vh;
   overflow: hidden;
-  border: 1px solid rgba(11, 21, 32, 0.12);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
 }
@@ -350,7 +351,7 @@
   font-family: "Geist", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #0b1520;
+  color: var(--text-primary);
 }
 
 .resume-modal-actions {
@@ -362,10 +363,10 @@
 .resume-modal-close {
   width: 30px;
   height: 30px;
-  border: 1px solid rgba(11, 21, 32, 0.12);
+  border: 1px solid var(--border);
   border-radius: 6px;
   background: transparent;
-  color: #4a6880;
+  color: var(--text-secondary);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -375,7 +376,7 @@
 }
 
 .resume-modal-close:hover {
-  background: #e3e8ef;
+  background: var(--chip-bg);
 }
 
 .resume-modal-close svg {
@@ -406,14 +407,14 @@
   justify-items: center;
   text-align: center;
   gap: 8px;
-  color: #4a6880;
+  color: var(--text-secondary);
 }
 
 .resume-modal-placeholder__icon {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: #e3e8ef;
+  background: var(--chip-bg);
   display: grid;
   place-items: center;
 }
@@ -428,7 +429,7 @@
   font-family: "Geist", sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #0b1520;
+  color: var(--text-primary);
 }
 
 .resume-modal-placeholder__note {
@@ -436,5 +437,5 @@
   font-family: "Geist", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #5b7a9b;
+  color: var(--text-secondary);
 }

@@ -51,18 +51,19 @@ const Hero = (): JSX.Element => {
     delay: prefersReducedMotion ? 0 : delay,
   });
 
-  return (
-    <section
-      id="hero"
-      className="site-shell section-block hero-block"
-      aria-label="Hero"
-    >
-      <div className="hero-rule" aria-hidden="true" />
-
-      <div
-        className="hero-content"
-        style={{ visibility: isReady ? "visible" : "hidden" }}
+    return (
+      <section
+        id="hero"
+        className="site-shell section-block hero-block"
+        aria-label="Hero"
       >
+        <div className="hero-visual-anchor" aria-hidden="true" />
+        <div className="hero-rule" aria-hidden="true" />
+        
+        <div
+          className="hero-content"
+          style={{ visibility: isReady ? "visible" : "hidden" }}
+        >
         <motion.h1
           className="hero-name"
           initial={

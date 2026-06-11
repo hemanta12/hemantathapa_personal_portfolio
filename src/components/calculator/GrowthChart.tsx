@@ -51,18 +51,18 @@ export function GrowthChart({
             <stop offset="100%" stopColor={color} stopOpacity={0} />
           </linearGradient>
         </defs>
-        <CartesianGrid stroke="#eef0f3" strokeDasharray="0" vertical={false} />
+        <CartesianGrid stroke="#E2E8F0" strokeDasharray="0" vertical={false} />
         <XAxis
           dataKey="year"
           tickFormatter={(y: number) => ageOn ? `${startAge + y}` : y === 0 ? '0' : `${y}y`}
-          tick={{ fill: '#8b929c', fontSize: 11 }}
+          tick={{ fill: '#64748B', fontSize: 11 }}
           tickLine={false}
-          axisLine={{ stroke: '#e6e8ec' }}
+          axisLine={{ stroke: '#E2E8F0' }}
           minTickGap={22}
         />
         <YAxis
           tickFormatter={moneyAxis}
-          tick={{ fill: '#8b929c', fontSize: 11 }}
+          tick={{ fill: '#64748B', fontSize: 11 }}
           tickLine={false}
           axisLine={false}
           width={48}
@@ -76,7 +76,7 @@ export function GrowthChart({
         <Line
           type="monotone"
           dataKey="contributed"
-          stroke="#8b929c"
+          stroke="#64748B"
           strokeWidth={1.25}
           strokeDasharray="3 3"
           dot={false}
@@ -97,9 +97,9 @@ export function GrowthChart({
         {showMarker && (
           <ReferenceLine
             x={retireYear}
-            stroke="#8b929c"
+            stroke="#64748B"
             strokeDasharray="4 4"
-            label={{ value: `Age ${retirementAge}`, position: 'top', fill: '#646b76', fontSize: 10, fontWeight: 600 }}
+            label={{ value: `Age ${retirementAge}`, position: 'top', fill: '#475569', fontSize: 10, fontWeight: 600 }}
           />
         )}
       </ComposedChart>

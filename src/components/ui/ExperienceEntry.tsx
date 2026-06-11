@@ -15,7 +15,7 @@ const ExperienceEntry = ({
       <motion.span
         className="exp-entry__dot"
         aria-hidden="true"
-        initial={{ borderColor: "rgba(11, 21, 32, 0.15)" }}
+        initial={{ borderColor: "rgba(15, 23, 42, 0.12)" }}
         whileInView={{ borderColor: "var(--accent)" }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{

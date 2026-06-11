@@ -131,7 +131,7 @@ const AskHemanta = (): JSX.Element => {
           >
             <path
               d="M3 8h10M9 4l4 4-4 4"
-              stroke="#3D5672"
+              stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
