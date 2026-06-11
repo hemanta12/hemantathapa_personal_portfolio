@@ -44,6 +44,13 @@ export default function CalculatorContainer() {
     return `thapahemanta-wfg-tools-usage-${year}-${month}`;
   }, []);
 
+  // Set document title to "CI Calculator" while on this page
+  useEffect(() => {
+    const prev = document.title;
+    document.title = "CI Calculator — Interest of Compound Growth";
+    return () => { document.title = prev; };
+  }, []);
+
   // Fetch the current monthly usage count on mount
   useEffect(() => {
     fetch(`https://countapi.mileshilliard.com/api/v1/get/${currentMonthKey}`)
@@ -509,8 +516,8 @@ export default function CalculatorContainer() {
               guaranteed. This tool does not provide financial advice.
             </p>
             <p className="mt-2 text-xs text-muted">
-              &copy; {new Date().getFullYear()} Developed by thapahemanta. All
-              rights reserved.
+              &copy; {new Date().getFullYear()} Hemanta Thapa. All rights
+              reserved.
             </p>
           </div>
           {usageCount !== null && (

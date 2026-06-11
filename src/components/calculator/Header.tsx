@@ -21,10 +21,13 @@ export function Header() {
           </svg>
         </span>
         <h1 className="font-display text-[28px] font-semibold tracking-tight text-ink sm:text-3xl">
-          Compound Growth
+          CI Calculator
         </h1>
       </div>
-      <p className="mt-2.5 max-w-md text-sm leading-relaxed text-body">
+      <p className="mt-1 text-xs font-medium uppercase tracking-widest text-muted">
+        Interest of Compound Growth
+      </p>
+      <p className="mt-2 max-w-md text-sm leading-relaxed text-body">
         See how money grows with compound interest — and compare up to three
         scenarios side by side.
       </p>
