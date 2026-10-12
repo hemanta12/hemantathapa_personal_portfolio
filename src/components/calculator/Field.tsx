@@ -36,7 +36,7 @@ export function NumberField({
       <span className="text-[11px] font-medium uppercase tracking-wide text-muted">
         {label}
       </span>
-      <div className="flex items-center rounded-lg border border-line bg-bg px-2 transition-colors focus-within:border-accent focus-within:bg-surface focus-within:ring-2 focus-within:ring-accent/15">
+      <div className="flex items-center rounded-[8px] border border-line bg-bg px-2 transition-colors focus-within:border-accent focus-within:bg-surface focus-within:ring-2 focus-within:ring-accent/15">
         {prefix && (
           <span className="pr-0.5 text-[13px] text-muted">{prefix}</span>
         )}
@@ -44,6 +44,7 @@ export function NumberField({
           id={id}
           type="text"
           inputMode="decimal"
+          autoComplete="off"
           value={display}
           placeholder={placeholder}
           onFocus={() => setDraft(value === 0 ? "" : String(value))}

@@ -61,10 +61,10 @@ export function ScenarioCard({
 
   return (
     <section
-      className="flex flex-col rounded-2xl border border-line bg-surface p-3 md:p-3.5 shadow-sm transition-shadow duration-200"
+      className="flex flex-col rounded-[10px] border border-line bg-surface p-3 md:p-3.5 shadow-sm transition-shadow duration-200"
       style={{ "--card-color": scenario.color } as React.CSSProperties}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = `0 8px 24px ${scenario.color}15`;
+        e.currentTarget.style.boxShadow = "0 8px 24px rgba(22,24,29,0.1)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = "";
@@ -74,10 +74,7 @@ export function ScenarioCard({
       <div className="mb-2.5 flex items-center gap-2">
         <span
           className="h-2.5 w-2.5 shrink-0 rounded-full"
-          style={{
-            background: scenario.color,
-            boxShadow: `0 0 6px ${scenario.color}60`,
-          }}
+          style={{ background: scenario.color }}
           aria-hidden
         />
         <input
@@ -90,7 +87,7 @@ export function ScenarioCard({
           <button
             onClick={onDuplicate}
             aria-label={`Duplicate ${scenario.label}`}
-            className="shrink-0 cursor-pointer rounded-md px-2 py-1 text-xs font-medium text-muted transition-colors hover:bg-line/70 hover:text-ink"
+            className="shrink-0 cursor-pointer rounded-[8px] px-2 py-1 text-xs font-medium text-muted transition-colors hover:bg-line/70 hover:text-ink"
           >
             Duplicate
           </button>
@@ -99,7 +96,7 @@ export function ScenarioCard({
           <button
             onClick={onRemove}
             aria-label={`Remove ${scenario.label}`}
-            className="shrink-0 cursor-pointer rounded-md px-1.5 text-lg leading-none text-muted transition-colors hover:bg-line/70 hover:text-ink"
+            className="shrink-0 cursor-pointer rounded-[8px] px-1.5 text-lg leading-none text-muted transition-colors hover:bg-line/70 hover:text-ink"
           >
             ×
           </button>
@@ -149,10 +146,11 @@ export function ScenarioCard({
             </span>
             <select
               value={scenario.compounding}
+              autoComplete="off"
               onChange={(e) =>
                 onChange({ compounding: e.target.value as Compounding })
               }
-              className="cursor-pointer rounded-lg border border-line bg-surface px-2.5 py-1.5 text-sm font-medium text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/15"
+              className="cursor-pointer rounded-[8px] border border-line bg-surface px-2.5 py-1.5 text-sm font-medium text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/15"
             >
               {COMPOUNDING_OPTIONS.map((opt) => (
                 <option key={opt} value={opt}>
@@ -174,7 +172,7 @@ export function ScenarioCard({
               {money(headline)}
             </div>
             {hasData && retireValue != null && (
-              <div className="mt-1.5 flex items-center justify-between rounded-lg bg-accent/10 px-2.5 py-1.5">
+              <div className="mt-1.5 flex items-center justify-between rounded-[8px] bg-accent/10 px-2.5 py-1.5">
                 <span className="text-xs font-medium text-body">
                   At age {retirementAge}
                 </span>
@@ -199,7 +197,7 @@ export function ScenarioCard({
                 </p>
                 <button
                   onClick={() => onChange({ ...EXAMPLE_SCENARIO })}
-                  className="mt-1.5 cursor-pointer rounded-lg border border-accent/30 bg-accent/5 px-3 py-1.5 text-xs font-semibold text-accent transition-colors duration-150 hover:bg-accent/10"
+                  className="mt-1.5 cursor-pointer rounded-[8px] border border-accent/30 bg-accent/5 px-3 py-1.5 text-xs font-semibold text-accent transition-colors duration-150 hover:bg-accent/10"
                 >
                   Try an example: $500/mo at 10% for 30 years
                 </button>
@@ -265,7 +263,7 @@ export function ScenarioCard({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg bg-bg px-2 py-1.5 transition-colors duration-150 hover:bg-line/40">
+    <div className="rounded-[8px] bg-bg px-2 py-1.5 transition-colors duration-150 hover:bg-line/40">
       <div className="text-[10px] font-medium uppercase tracking-wide text-muted">
         {label}
       </div>

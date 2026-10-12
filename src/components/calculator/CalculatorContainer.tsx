@@ -44,10 +44,10 @@ export default function CalculatorContainer() {
     return `thapahemanta-wfg-tools-usage-${year}-${month}`;
   }, []);
 
-  // Set document title to "CI Calculator" while on this page
+  // Set document title to "Compound Growth Calculator" while on this page
   useEffect(() => {
     const prev = document.title;
-    document.title = "CI Calculator — Interest of Compound Growth";
+    document.title = "Compound Growth Calculator";
     return () => { document.title = prev; };
   }, []);
 
@@ -219,7 +219,7 @@ export default function CalculatorContainer() {
   const ghostWidthClass = "w-full md:flex-1 md:min-w-[150px] md:max-w-[200px]";
 
   const numCls =
-    "w-14 rounded-md border border-line bg-white/80 px-2 py-1 text-center text-sm font-medium text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/15";
+    "w-14 rounded-[8px] border border-line bg-white/80 px-2 py-1 text-center text-sm font-medium text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/15";
 
   return (
     <div className="min-h-svh bg-bg">
@@ -229,13 +229,13 @@ export default function CalculatorContainer() {
         {/* Global adjustments — pill toggles, centered */}
         <div className="mt-4 flex flex-col items-center gap-2.5">
           {/* Toggle row — pill tray */}
-          <div className="flex flex-wrap justify-center gap-1 rounded-full border border-line bg-surface p-1">
+          <div className="flex flex-wrap justify-center gap-1 rounded-[8px] border border-line bg-surface p-1">
             <button
               onClick={() => setAdjustInflation((v) => !v)}
               className={[
-                "inline-flex cursor-pointer items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200",
+                "inline-flex cursor-pointer items-center gap-1.5 rounded-[8px] px-4 py-1.5 text-sm font-medium transition-all duration-200",
                 adjustInflation
-                  ? "bg-accent text-white shadow-[0_2px_8px_rgba(79,70,229,0.3)]"
+                  ? "bg-accent text-white"
                   : "text-body hover:bg-bg hover:text-ink",
               ].join(" ")}
             >
@@ -259,9 +259,9 @@ export default function CalculatorContainer() {
             <button
               onClick={() => setAgeOn((v) => !v)}
               className={[
-                "inline-flex cursor-pointer items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200",
+                "inline-flex cursor-pointer items-center gap-1.5 rounded-[8px] px-4 py-1.5 text-sm font-medium transition-all duration-200",
                 ageOn
-                  ? "bg-accent text-white shadow-[0_2px_8px_rgba(79,70,229,0.3)]"
+                  ? "bg-accent text-white"
                   : "text-body hover:bg-bg hover:text-ink",
               ].join(" ")}
             >
@@ -292,6 +292,7 @@ export default function CalculatorContainer() {
                   <input
                     type="text"
                     inputMode="decimal"
+                    autoComplete="off"
                     value={inflationDraft}
                     aria-label="Inflation rate"
                     aria-invalid={Boolean(inflationError)}
@@ -307,7 +308,6 @@ export default function CalculatorContainer() {
                         validateInflation(inflationDraft);
                       if (error) {
                         setInflationError(error);
-                        setInflationDraft(String(inflation));
                         return;
                       }
                       setInflation(value!);
@@ -340,6 +340,7 @@ export default function CalculatorContainer() {
                     <input
                       type="text"
                       inputMode="numeric"
+                      autoComplete="off"
                       value={startAgeDraft}
                       aria-label="Starting age"
                       aria-invalid={Boolean(startAgeError)}
@@ -355,7 +356,6 @@ export default function CalculatorContainer() {
                           validateStartAge(startAgeDraft);
                         if (error) {
                           setStartAgeError(error);
-                          setStartAgeDraft(String(startAge));
                           return;
                         }
 
@@ -388,6 +388,7 @@ export default function CalculatorContainer() {
                     <input
                       type="text"
                       inputMode="numeric"
+                      autoComplete="off"
                       value={retirementAgeDraft}
                       aria-label="Retirement age"
                       aria-invalid={Boolean(retirementAgeError)}
@@ -405,7 +406,6 @@ export default function CalculatorContainer() {
                         );
                         if (error) {
                           setRetirementAgeError(error);
-                          setRetirementAgeDraft(String(retirementAge));
                           return;
                         }
                         setRetirementAge(value!);
@@ -430,7 +430,7 @@ export default function CalculatorContainer() {
 
         {/* Plain-language gap between the strongest and weakest scenario */}
         {comparison && (
-          <p className="mt-3 rounded-xl border border-line bg-surface px-4 py-2.5 text-sm leading-relaxed text-body">
+          <p className="mt-3 rounded-[10px] border border-line bg-surface px-4 py-2.5 text-sm leading-relaxed text-body">
             <span className="font-semibold text-ink">
               {comparison.best.scenario.label}
             </span>{" "}
@@ -462,7 +462,7 @@ export default function CalculatorContainer() {
             return (
               <div
                 key={scenario.id}
-                className={`card-animate ${cardWidthClass}`}
+                className={`${cardWidthClass}`}
               >
                 <ScenarioCard
                   scenario={scenario}
@@ -486,7 +486,7 @@ export default function CalculatorContainer() {
           {!atMax && (
             <button
               onClick={addScenario}
-              className={`flex min-h-[200px] ${ghostWidthClass} cursor-pointer flex-col items-center justify-center gap-2 self-start rounded-2xl border border-dashed border-line bg-surface/40 py-8 text-muted transition-colors duration-150 hover:border-accent/40 hover:bg-accent/[0.04] hover:text-accent`}
+              className={`flex min-h-[200px] ${ghostWidthClass} cursor-pointer flex-col items-center justify-center gap-2 self-start rounded-[10px] border border-dashed border-line bg-surface/40 py-8 text-muted transition-colors duration-150 hover:border-accent/40 hover:bg-accent/[0.04] hover:text-accent`}
             >
               <span className="grid h-9 w-9 place-items-center rounded-full border border-current">
                 <svg
@@ -523,7 +523,7 @@ export default function CalculatorContainer() {
           {usageCount !== null && (
             <div className="text-xs text-muted sm:text-right shrink-0">
               <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-2.5 py-1 font-medium text-body">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 Used {usageCount.toLocaleString()} times this month
               </span>
             </div>

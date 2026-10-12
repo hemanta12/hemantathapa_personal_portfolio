@@ -51,18 +51,18 @@ export function GrowthChart({
             <stop offset="100%" stopColor={color} stopOpacity={0} />
           </linearGradient>
         </defs>
-        <CartesianGrid stroke="#E2E8F0" strokeDasharray="0" vertical={false} />
+        <CartesianGrid stroke="#E3E3E6" strokeDasharray="0" vertical={false} />
         <XAxis
           dataKey="year"
           tickFormatter={(y: number) => ageOn ? `${startAge + y}` : y === 0 ? '0' : `${y}y`}
-          tick={{ fill: '#64748B', fontSize: 11 }}
+          tick={{ fill: '#6E7480', fontSize: 11 }}
           tickLine={false}
-          axisLine={{ stroke: '#E2E8F0' }}
+          axisLine={{ stroke: '#E3E3E6' }}
           minTickGap={22}
         />
         <YAxis
           tickFormatter={moneyAxis}
-          tick={{ fill: '#64748B', fontSize: 11 }}
+          tick={{ fill: '#6E7480', fontSize: 11 }}
           tickLine={false}
           axisLine={false}
           width={48}
@@ -76,7 +76,7 @@ export function GrowthChart({
         <Line
           type="monotone"
           dataKey="contributed"
-          stroke="#64748B"
+          stroke="#6E7480"
           strokeWidth={1.25}
           strokeDasharray="3 3"
           dot={false}
@@ -97,9 +97,9 @@ export function GrowthChart({
         {showMarker && (
           <ReferenceLine
             x={retireYear}
-            stroke="#64748B"
+            stroke="#6E7480"
             strokeDasharray="4 4"
-            label={{ value: `Age ${retirementAge}`, position: 'top', fill: '#475569', fontSize: 10, fontWeight: 600 }}
+            label={{ value: `Age ${retirementAge}`, position: 'top', fill: '#3F4650', fontSize: 10, fontWeight: 600 }}
           />
         )}
       </ComposedChart>
@@ -136,7 +136,7 @@ function ChartTooltip({
 
   return (
     <div
-      className="rounded-lg border bg-surface/95 px-3 py-2 shadow-md backdrop-blur"
+      className="rounded-[8px] border bg-surface/95 px-3 py-2 shadow-md backdrop-blur"
       style={{ borderColor: color ? `${color}30` : undefined }}
     >
       <div className="text-[11px] font-semibold uppercase tracking-wide text-muted">{heading}</div>
