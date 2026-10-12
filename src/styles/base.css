@@ -1,32 +1,70 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/satoshi-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/satoshi-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --bg: #FFFFFF;
-  --bg-surface: #F8FAFC;
-  --bg-dark: #F1F5F9;
-  --bg-card: #F8FAFC;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-display: "Satoshi", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --text-faint: #64748B;
+  --surface: #ffffff;
+  --surface-raised: #f5f5f7;
+  --surface-hover: #ececef;
+  --ink: #16181d;
+  --body: #3f4650;
+  --muted: #5c6370;
 
-  --accent: #4F46E5;
-  --accent-dim: #4338CA;
-  --accent-mid: #6366F1;
+  --hairline: rgba(22, 24, 29, 0.12);
+  --hairline-strong: rgba(22, 24, 29, 0.24);
+  --hairline-hover: rgba(22, 24, 29, 0.24);
 
-  --border: rgba(15, 23, 42, 0.1);
-  --border-hover: rgba(15, 23, 42, 0.2);
+  --radius-card: 10px;
+  --radius-control: 8px;
 
-  --chip-bg: #F1F5F9;
-  --chip-text: #475569;
+  /* Accent — emerald, the only accent */
+  --accent: #047857;
+  --accent-strong: #065f46;
+  --accent-soft: rgba(4, 120, 87, 0.1);
+
+  /* Legacy aliases kept so section styles keep resolving */
+  --bg: var(--surface);
+  --bg-surface: var(--surface-raised);
+  --bg-dark: var(--surface-hover);
+  --bg-card: var(--surface-raised);
+
+  --text-primary: var(--ink);
+  --text-secondary: var(--body);
+  --text-muted: var(--muted);
+  --text-faint: var(--muted);
+
+  --accent-dim: var(--accent);
+  --accent-mid: var(--accent);
+
+  --border: var(--hairline);
+  --border-hover: var(--hairline-hover);
+
+  --chip-bg: var(--surface-raised);
+  --chip-text: var(--body);
 }
 
 * {
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
+html, body, #root {
   margin: 0;
   min-height: 100%;
 }
@@ -34,18 +72,13 @@ body,
 body {
   background: var(--bg);
   color: var(--text-primary);
-  font-family: "Geist", sans-serif;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.8;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-body,
-input,
-button,
-a,
-textarea,
-select {
+body, input, button, a, textarea, select {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -75,49 +108,4 @@ main {
 .site-shell {
   width: min(1320px, calc(100% - 112px));
   margin: 0 auto;
-}
-
-.section-block {
-  padding: 56px 0 80px;
-}
-
-.section-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 16px;
-  margin-bottom: 64px;
-  padding-bottom: 24px;
-  border-bottom: 2px solid var(--border);
-}
-
-.section-header__title-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.section-title {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 56px;
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.section-title em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--accent);
-}
-
-.section-label-inline {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  opacity: 0.8;
-  letter-spacing: 0;
-  text-transform: none;
 }

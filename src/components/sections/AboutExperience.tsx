@@ -1,65 +1,52 @@
-import SectionHeader from "../ui/SectionHeader";
-import ExperienceEntry from "../ui/ExperienceEntry.tsx";
-import ScrollReveal from "../ui/ScrollReveal";
 import { about, experience } from "../../data/content";
 
-const AboutExperience = (): JSX.Element => {
-  return (
-    <section
-      id="about-experience"
-      className="site-shell section-block"
-      aria-label="About and experience"
-    >
-      <SectionHeader title="About" em="& Experience" />
-
-      <div className="about-exp-grid">
-        <div className="about-col">
-          <div className="bio-copy">
-            {about.bio.map((paragraph, index) => (
-              <ScrollReveal key={paragraph} delay={100 + index * 80}>
-                <p>{paragraph}</p>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className="interests-block">
-            <p className="eyebrow">Interests</p>
-            <div className="interest-list">
-              {about.interests.map((interest, index) => (
-                <ScrollReveal key={interest.name} delay={index * 80}>
-                  <div className="interest-item">
-                    <span className="interest-item__icon">{interest.icon}</span>
-                    <div>
-                      <p className="interest-item__name">{interest.name}</p>
-                      <p className="interest-item__sub">{interest.sub}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="exp-col">
-          <p className="eyebrow eyebrow--line eyebrow--experience">
-            Work experience
-          </p>
-          <div className="exp-timeline">
-            {experience.map((entry, index) => (
-              <ScrollReveal key={entry.company} delay={index * 150}>
-                <div className="exp-timeline__item-wrap">
-                  <ExperienceEntry entry={entry} delayMs={index * 150} />
-                  {index < experience.length - 1 ? (
-                    <div className="exp-divider" aria-hidden="true" />
-                  ) : null}
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+const AboutExperience = (): JSX.Element => (
+  <section
+    id="about-experience"
+    className="home-plane home-pale"
+    aria-label="About and experience"
+  >
+    <div className="home-wrap">
+      <h2 className="home-sr">About and experience</h2>
+      <div className="home-about">
+        <p className="home-statement">{about.pullQuote.replace(/^"|"$/g, "")}</p>
+        <div className="home-bio">
+          {about.bio.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
         </div>
       </div>
-    </section>
-  );
-};
+
+      <div className="home-exp">
+        {experience.map((e) => (
+          <article key={e.company} className="home-exp__row">
+            <div>
+              <h3 className="home-h2">{e.company}</h3>
+              <p className="home-meta">{e.role}</p>
+              <p className="home-meta">{e.period}</p>
+            </div>
+            <div>
+              <ul>
+                {e.bullets.map((b) => (
+                  <li key={b} dangerouslySetInnerHTML={{ __html: b }} />
+                ))}
+              </ul>
+              <p className="home-tags">{e.tags.join(", ")}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="home-interests">
+        {about.interests.map((i) => (
+          <div key={i.name}>
+            <h3>{i.name}</h3>
+            <p>{i.sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default AboutExperience;

@@ -24,7 +24,7 @@ const SKILL_ICON_MAP: Record<string, string> = {
   PostgreSQL: "https://cdn.simpleicons.org/postgresql",
   MongoDB: "https://cdn.simpleicons.org/mongodb",
   MySQL: "https://cdn.simpleicons.org/mysql",
-  AWS: "https://cdn.simpleicons.org/amazonaws",
+  AWS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
   Docker: "https://cdn.simpleicons.org/docker",
   Jenkins: "https://cdn.simpleicons.org/jenkins",
   Git: "https://cdn.simpleicons.org/git",
@@ -35,11 +35,18 @@ const SKILL_ICON_MAP: Record<string, string> = {
   spaCy: "https://cdn.simpleicons.org/spacy",
   Pandas: "https://cdn.simpleicons.org/pandas",
   NumPy: "https://cdn.simpleicons.org/numpy",
-  "Prompt Eng.": "https://cdn.simpleicons.org/openai",
-};
-
-const getSkillIcon = (name: string): string => {
-  return SKILL_ICON_MAP[name] ?? "https://cdn.simpleicons.org/devdotto";
+  LangGraph: "https://cdn.simpleicons.org/langgraph",
+  LangChain: "https://cdn.simpleicons.org/langchain",
+  FastAPI: "https://cdn.simpleicons.org/fastapi",
+  Django: "https://cdn.simpleicons.org/django",
+  pytest: "https://cdn.simpleicons.org/pytest",
+  Gemini: "https://cdn.simpleicons.org/googlegemini",
+  "Claude Code": "https://cdn.simpleicons.org/claude",
+  Supabase: "https://cdn.simpleicons.org/supabase",
+  Railway: "https://cdn.simpleicons.org/railway",
+  Vercel: "https://cdn.simpleicons.org/vercel",
+  "GitHub Actions": "https://cdn.simpleicons.org/githubactions",
+  "Prompt Eng.": "https://cdn.simpleicons.org/anthropic",
 };
 
 const SkillGroup = ({ title, items }: SkillGroupProps): JSX.Element => {
@@ -47,20 +54,18 @@ const SkillGroup = ({ title, items }: SkillGroupProps): JSX.Element => {
     <article className="skill-group">
       <h3 className="skill-group__title">{title}</h3>
       <div className="skill-group__items">
-        {items.map((item, index) => (
-          <div
-            key={item.name}
-            className="skill-item skill-item--enter"
-            style={{ animationDelay: `${index * 20}ms` }}
-          >
-            <span className="skill-item__icon" aria-hidden="true">
-              <img
-                src={getSkillIcon(item.name)}
-                alt=""
-                loading="lazy"
-                decoding="async"
-              />
-            </span>
+        {items.map((item) => (
+          <div key={item.name} className="skill-item">
+            {SKILL_ICON_MAP[item.name] && (
+              <span className="skill-item__icon" aria-hidden="true">
+                <img
+                  src={SKILL_ICON_MAP[item.name]}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+            )}
             <span className="skill-item__name">{item.name}</span>
           </div>
         ))}

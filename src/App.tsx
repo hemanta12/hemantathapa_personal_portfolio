@@ -12,11 +12,14 @@ import CalculatorContainer from "./components/calculator/CalculatorContainer.tsx
 const MainPortfolio = (): JSX.Element => {
   return (
     <>
+      <a className="home-skip" href="#main">
+        Skip to content
+      </a>
       <Nav />
-      <main>
+      <main id="main" className="home">
         <Hero />
-        <Work />
         <AboutExperience />
+        <Work />
         <Skills />
         <Education />
         <Contact />

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 type ScrollProgressState = {
-  scrollY: number;
   isScrolled: boolean;
 };
 
@@ -11,11 +10,13 @@ const getScrollY = (): number => {
 };
 
 const useScrollProgress = (threshold = 60): ScrollProgressState => {
-  const [scrollY, setScrollY] = useState<number>(getScrollY());
+  const [isScrolled, setIsScrolled] = useState<boolean>(
+    () => getScrollY() >= threshold,
+  );
 
   useEffect(() => {
     const onScroll = (): void => {
-      setScrollY(getScrollY());
+      setIsScrolled(getScrollY() >= threshold);
     };
 
     onScroll();
@@ -24,12 +25,9 @@ const useScrollProgress = (threshold = 60): ScrollProgressState => {
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [threshold]);
 
-  return {
-    scrollY,
-    isScrolled: scrollY >= threshold,
-  };
+  return { isScrolled };
 };
 
 export default useScrollProgress;

@@ -15,50 +15,28 @@ export type SiteContent = {
 };
 
 export type HeroContent = {
-  belief: string;
-  role1: string;
-  role2: string;
-  bgWord: string;
-  personality: string[];
-  personalityIcons: string[];
-  stackChips: string[];
   ctaWork: string;
   ctaContact: string;
   profileImage: string;
 };
 
-export type FeaturedProject = {
-  index: string;
+export type Project = {
   category: string;
   title: string;
-  subtitle: string;
   description: string;
   tags: string[];
-  image: string;
   live: string;
   github: string;
-  imageLight: boolean;
-};
-
-export type GridProject = {
-  title: string;
-  category: string;
-  description: string;
-  tags: string[];
-  github: string;
-  live: string;
-  icon: string;
-  color: string;
+  note?: string;
   image?: string;
 };
 
 export type WorkContent = {
-  featured: FeaturedProject[];
-  grid: GridProject[];
+  featured: Project[];
+  more: Project[];
 };
 
 export type InterestItem = {
-  icon: string;
   name: string;
   sub: string;
 };
@@ -79,9 +57,6 @@ export type ExperienceEntry = {
 
 export type SkillItem = {
   name: string;
-  abbr: string;
-  bg: string;
-  color: string;
 };
 
 export type EducationEntry = {
@@ -113,8 +88,8 @@ export const site: SiteContent = {
 };
 
 export const navLinks: NavItem[] = [
-  { label: "Work", href: "#work" },
   { label: "Experience", href: "#about-experience" },
+  { label: "Projects", href: "#work" },
   { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
@@ -122,116 +97,135 @@ export const navLinks: NavItem[] = [
 ];
 
 export const hero: HeroContent = {
-  belief:
-    "I believe technology - whether a website, an app, or an AI agent - exists to solve real problems and make life genuinely better. Innovation just means that help reaches more people, faster.",
-  role1: "Full-Stack Engineer",
-  role2: "& AI Builder",
-  bgWord: "Build",
-  personality: ["Guitar", "Soccer", "Writing", "Food", "Basketball"],
-  personalityIcons: ["♪", "◎", "✦", "◈", "◉"],
-  stackChips: ["React", "Node.js", "TypeScript", "Python", "AWS"],
-  ctaWork: "See my work",
+  ctaWork: "See my projects",
   ctaContact: "Get in touch",
   profileImage,
 };
 
 export const work: WorkContent = {
+  // featured[0] is the main project; the rest sit side by side beneath it.
   featured: [
     {
-      index: "01",
-      category: "Full-Stack · CMS · Booking",
-      title: "Sasa Eyebrow Threading",
-      subtitle: "Full-stack CMS & booking platform",
+      category: "AI Agent, LLM Systems",
+      title: "DoveAI",
       description:
-        "Built the entire product from scratch - PostgreSQL through Node.js/Express to React, with a secure JWT admin portal, automated Google Places review caching via daily cron jobs, and a custom image pipeline using Cloudflare R2.",
-      tags: [
-        "React",
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "Tailwind",
-        "Cloudflare R2",
-        "JWT",
-      ],
+        "Personal AI assistant on a LangGraph agent graph with intent routing, about 40 database tools, and a verification gate that rejects replies not backed by real tool calls. Handles Whisper voice input, images, PDFs, and Gmail drafts. Langfuse tracing, multi-provider routing (Gemini, OpenAI, DeepSeek via OpenRouter) with per-model cost accounting and a monthly spend ceiling, plus prompt-injection and PII guards.",
+      tags: ["LangGraph", "FastAPI", "Supabase", "React", "Langfuse"],
+      live: "",
+      github: "",
+      note: "Demo on request",
+    },
+    {
+      category: "Full-Stack, Real-Time, PWA",
+      title: "BrokeEven",
+      description:
+        "No-signup Splitwise alternative for friends and housemates. Everyone in a group sees balances update live, with cent-exact split math. 9 active users, 2 groups, 20 expenses, and about 300 tests running in CI.",
+      tags: ["React", "TypeScript", "Express", "PostgreSQL", "Prisma", "Socket.io"],
+      live: "https://brokeeven.swiftmodernsolutions.com/",
+      github: "",
+      note: "Code on request",
+    },
+    {
+      category: "RAG, MSAI Team Project",
+      title: "Handbook FAQ Chatbot",
+      description:
+        "RAG chatbot over a 77-page handbook, built by a team of 5; my part was extraction, chunking, and adaptive retrieval. Page-level chunking (76 chunks) fixed a failure that collapsed the document into one chunk. An adaptive top-5 retriever (margin 0.4, ceiling 1.25) refuses out-of-scope questions instead of guessing.",
+      tags: ["Python", "PDFPlumber", "FAISS", "sentence-transformers"],
+      live: "",
+      github: "https://github.com/hemanta12/FAQ-chatbot",
+    },
+  ],
+  more: [
+    {
+      category: "Full-Stack, Django",
+      title: "LetsQuiz",
+      description:
+        "No-login trivia for solo play or 2 to 6 players in one room. 1,795 questions. Local play only.",
+      tags: ["Django REST", "PostgreSQL", "React", "TypeScript"],
+      live: "",
+      github: "",
+      note: "Code on request",
+    },
+    {
+      category: "Paused",
+      title: "TheBiasLens",
+      description:
+        "News analysis with fact-check retrieval. Paused mid-build; not deployed.",
+      tags: ["FastAPI", "React", "Python"],
+      live: "",
+      github: "",
+    },
+    {
+      category: "Full-Stack, CMS, Booking",
+      title: "Sasa Eyebrow Threading",
+      description:
+        "CMS and booking platform built from scratch: JWT admin portal, cached Google reviews via cron, Cloudflare R2 image pipeline.",
+      tags: ["React", "Node.js", "PostgreSQL", "Cloudflare R2"],
       image: sasabrowsImage,
       live: "https://sasaeyebrowsthreading.com",
       github: "",
-      imageLight: true,
     },
     {
-      index: "02",
-      category: "Frontend · SPA · Performance",
+      category: "Frontend, SPA",
       title: "Swift Modern Solutions",
-      subtitle: "High-performance marketing SPA",
       description:
-        "Mobile-first SPA built for conversion. Custom Light/Dark theme with localStorage persistence, honeypot spam mitigation on lead capture, and component architecture targeting 90+ Lighthouse scores across performance and accessibility.",
-      tags: ["React", "Vite", "Tailwind CSS", "React Router", "JavaScript"],
+        "Mobile-first marketing SPA with light/dark theme and spam-protected lead capture, targeting 90+ Lighthouse scores.",
+      tags: ["React", "Vite", "Tailwind CSS"],
       image: smsImage,
       live: "https://swiftmodernsolutions.com/",
       github: "",
-      imageLight: true,
     },
-  ],
-  grid: [
     {
-      title: "TrackMyFinance",
+      category: "Tool",
+      title: "Compound Growth Calculator",
+      description:
+        "Side-by-side compound interest simulator with inflation adjustment and retirement visualization.",
+      tags: ["React", "TypeScript", "Recharts"],
+      image: calculatorPreviewImage,
+      live: "/tools",
+      github: "https://github.com/hemanta12/compound-calculator",
+    },
+    {
       category: "Shipped build",
+      title: "TrackMyFinance",
       description:
         "Personal finance tracker with charts, expense categories, and PDF export.",
       tags: ["React", "Node.js", "MySQL", "Chart.js"],
-      github: "",
-      live: "",
-      icon: "$",
-      color: "#1C3348",
       image: trackMyFinanceImage,
+      live: "",
+      github: "",
     },
     {
-      title: "Compound Growth Calculator",
-      category: "Tool",
-      description:
-        "Side-by-side compound interest simulator with inflation adjustment and retirement visualization.",
-      tags: ["React", "TypeScript", "Recharts", "Tailwind CSS"],
-      github: "https://github.com/hemanta12/compound-calculator",
-      live: "/tools",
-      icon: "📈",
-      color: "#243040",
-      image: calculatorPreviewImage,
-    },
-    {
-      title: "Car Race",
       category: "Shipped build",
+      title: "Car Race",
       description:
         "2D car racing game where players avoid obstacles and chase a high score.",
       tags: ["JavaScript", "HTML Canvas"],
-      github: "",
-      live: "",
-      icon: "▶",
-      color: "#2A2040",
       image: carRaceImage,
+      live: "",
+      github: "",
     },
   ],
 };
 
 export const about: AboutContent = {
   pullQuote:
-    '"I got into engineering because I wanted to build things that actually matter - not just things that technically work."',
+    '"I build AI systems the way I build software: they have to work for real people, not just in a demo."',
   bio: [
-    "I am a full-stack engineer with a background in computer science and two years of production experience building web applications. Right now I am deepening my understanding of machine learning and AI systems - not to chase a trend, but because I think intelligent software is the most direct path to the kind of impact I care about.",
-    "I approach problems analytically - mapping the terrain before writing a line of code. On a team, I am the person who asks why before asking how.",
+    "I am an engineer focusing on AI right now. I have 2+ years of software engineering experience building web apps, and I finished a master's in Artificial Intelligence in August 2026.",
+    "What I have learned building with AI is that the model is the easy part. The hard part is everything around it: making sure it only says what it can back up, letting it say \"I don't know\", and watching what it costs to run. A demo that works once is not a product, and most of my time goes into closing that gap.",
+    "I like to understand a problem before I write code. On a team, I am the person who asks why before asking how.",
   ],
   interests: [
     {
-      icon: "♪",
       name: "Guitar & Music",
-      sub: "Rhythm and structure - the same things I look for in good code.",
+      sub: "Rhythm and structure, the same things I look for in good code.",
     },
     {
-      icon: "◎",
       name: "Soccer & Basketball",
       sub: "Team sports. Reading the system, adapting fast.",
     },
     {
-      icon: "✦",
       name: "Writing & Food",
       sub: "Clarity of thought. Appreciation for craft.",
     },
@@ -244,78 +238,60 @@ export const experience: ExperienceEntry[] = [
     role: "Software Engineer",
     period: "Aug 2024 - Jan 2025",
     bullets: [
-      "Revamped a React-based alumni portal serving <strong>500+ users</strong>, improving UX and reliability.",
-      "Built <strong>15+ RESTful APIs</strong> with Node.js/Express, automating profile management workflows.",
-      "Containerized with Docker, deployed to <strong>AWS EC2</strong> - reduced deployment time by 25%.",
+      "Developed <strong>15+ RESTful APIs</strong> (Node.js/Express) for profile management, job referrals, and notifications.",
+      "Added an <strong>alumni networking module</strong> to the React portal, increasing engagement by 15%.",
+      "Containerized services with Docker and deployed via Jenkins CI/CD to <strong>AWS EC2</strong>, improving deployment speed by 25%.",
     ],
-    tags: ["React", "Node.js", "AWS EC2", "Docker", "REST APIs"],
+    tags: ["React", "Node.js", "AWS EC2", "Docker", "Jenkins", "REST APIs"],
   },
   {
     company: "Kuebiko, Inc",
-    role: "Programmer Analyst",
+    role: "Programmer Analyst / Software Developer",
     period: "Feb 2023 - Jul 2024",
     bullets: [
-      "Built a full-stack <strong>Applicant Tracking System</strong> from scratch - React, Node.js, MongoDB.",
-      "Implemented <strong>RBAC and JWT authentication</strong> for secure multi-role access control.",
-      "Achieved <strong>95% test coverage</strong> with Jest for stable continuous deployment.",
+      "Built an <strong>Applicant Tracking System</strong> (React, Node.js, MongoDB) replacing spreadsheets for 200+ users, cutting HR effort by 40%.",
+      "Built a <strong>timesheet and billing app</strong> (React, Node.js, MySQL) with approval workflows and PDF invoicing for 20+ consultants.",
+      "Migrated legacy candidate data to MongoDB with Python scripts, improving query speed by 20%.",
     ],
-    tags: ["React", "Node.js", "MongoDB", "JWT", "Jest", "RBAC"],
+    tags: ["React", "Node.js", "MongoDB", "MySQL", "Python"],
   },
 ];
 
 export const skills: Record<string, SkillItem[]> = {
-  Languages: [
-    { name: "Python", abbr: "Py", bg: "#1A2840", color: "#4B8BBE" },
-    { name: "JavaScript", abbr: "JS", bg: "#2A2400", color: "#F7DF1E" },
-    { name: "TypeScript", abbr: "TS", bg: "#1A2A4A", color: "#3178C6" },
-    { name: "Java", abbr: "Jv", bg: "#2A1A00", color: "#E76F00" },
-    { name: "HTML/CSS", abbr: "H", bg: "#2A1500", color: "#E44D26" },
-    { name: "SQL", abbr: "SQL", bg: "#001A2A", color: "#00758F" },
-  ],
-  Frontend: [
-    { name: "React", abbr: "Re", bg: "#1A2E42", color: "#61DAFB" },
-    { name: "Redux", abbr: "Rx", bg: "#200A40", color: "#764ABC" },
-    { name: "Tailwind", abbr: "Tw", bg: "#001824", color: "#38BDF8" },
-    { name: "Vite", abbr: "Vi", bg: "#1A0A2A", color: "#BD34FE" },
-    { name: "Bootstrap", abbr: "Bs", bg: "#1A0030", color: "#7952B3" },
-  ],
-  Backend: [
-    { name: "Node.js", abbr: "No", bg: "#1A3320", color: "#68A063" },
-    { name: "Express.js", abbr: "Ex", bg: "#0A0A0A", color: "#AAAAAA" },
-    { name: "Spring Boot", abbr: "Sp", bg: "#001A10", color: "#6DB33F" },
-    { name: "REST APIs", abbr: "API", bg: "#1A1A1A", color: "#AAAAAA" },
-  ],
-  Databases: [
-    { name: "PostgreSQL", abbr: "Pg", bg: "#001030", color: "#336791" },
-    { name: "MongoDB", abbr: "Mg", bg: "#0A1A00", color: "#47A248" },
-    { name: "MySQL", abbr: "My", bg: "#001830", color: "#4479A1" },
-  ],
-  "Cloud & DevOps": [
-    { name: "AWS", abbr: "AWS", bg: "#1A0C00", color: "#FF9900" },
-    { name: "Docker", abbr: "Dk", bg: "#001230", color: "#2496ED" },
-    { name: "Jenkins", abbr: "Jk", bg: "#001A20", color: "#D33833" },
-    { name: "Git", abbr: "Git", bg: "#1A0500", color: "#F05032" },
-    {
-      name: "Cloudflare R2",
-      abbr: "CF",
-      bg: "#001A2A",
-      color: "#F38020",
-    },
-  ],
-  "AI & Data Science": [
-    { name: "TensorFlow", abbr: "TF", bg: "#1A0A00", color: "#FF6F00" },
-    { name: "Keras", abbr: "Ks", bg: "#1A0005", color: "#D00000" },
-    {
-      name: "Scikit-learn",
-      abbr: "Sk",
-      bg: "#001A0A",
-      color: "#F89939",
-    },
-    { name: "spaCy", abbr: "Sp", bg: "#001A10", color: "#09A3D5" },
-    { name: "Pandas", abbr: "Pd", bg: "#000A1A", color: "#150458" },
-    { name: "NumPy", abbr: "Np", bg: "#001A1A", color: "#4DABCF" },
-    { name: "Prompt Eng.", abbr: "PE", bg: "#1A1A00", color: "#CCAA00" },
-  ],
+  Languages: ["Python", "TypeScript", "JavaScript", "SQL", "Java"].map((name) => ({ name })),
+  Frameworks: [
+    "LangGraph",
+    "LangChain",
+    "FastAPI",
+    "React",
+    "Express.js",
+    "Node.js",
+    "Django",
+    "pytest",
+  ].map((name) => ({ name })),
+  "ML / GenAI": [
+    "RAG",
+    "OpenAI",
+    "Gemini",
+    "FAISS",
+    "Langfuse",
+    "TensorFlow",
+    "Keras",
+    "Prompt Eng.",
+    "Pandas",
+    "NumPy",
+    "Claude Code",
+  ].map((name) => ({ name })),
+  "Cloud & Data": [
+    "AWS",
+    "Supabase",
+    "PostgreSQL",
+    "MongoDB",
+    "Railway",
+    "Vercel",
+    "Docker",
+    "GitHub Actions",
+  ].map((name) => ({ name })),
 };
 
 export const education: EducationEntry[] = [
@@ -323,9 +299,9 @@ export const education: EducationEntry[] = [
     type: "Graduate Degree",
     degree: "Master of Science in Artificial Intelligence",
     school: "University of the Cumberlands",
-    status: "In Progress",
-    date: "Expected Aug 2026",
-    current: true,
+    status: "Completed",
+    date: "Aug 2026",
+    current: false,
   },
   {
     type: "Undergraduate Degree",
@@ -344,10 +320,10 @@ export const certification: CertificationContent = {
 };
 
 export const askResponses: Record<string, string> = {
-  "Can he ship full-stack products?": `Yes — <span class="hl">React, Node.js, PostgreSQL, AWS</span> in production. Built a complete <span class="hl">CMS and booking platform</span> from scratch and a high-performance <span class="hl">marketing SPA</span> targeting 90+ Lighthouse scores. He owns the full stack.`,
-  "Why is he moving into AI?": `Not a pivot — an extension. Two years of <span class="hl">production engineering</span> gives him something most AI engineers don't have: real systems thinking. He's pursuing an <span class="hl">MS in AI</span> to add intelligence to products he already knows how to ship.`,
-  "Is he a good culture fit?": `Analytically wired — maps the problem before touching the keyboard. Plays <span class="hl">soccer and basketball</span>, so he understands team dynamics instinctively. Writes clearly, which usually means he thinks clearly. Calm, curious, direct.`,
-  "When is he available?": `Open to work <span class="hl">now</span>. Looking for <span class="hl">full-time engineering roles</span> — preferably remote — where the work actually matters to real people. Quick to onboard, ready to ship.`,
+  "Can he ship full-stack products?": `Yes. <span class="hl">React, Node.js, PostgreSQL, AWS</span> in production. Built a complete <span class="hl">CMS and booking platform</span> from scratch and <span class="hl">BrokeEven</span>, a real-time expense-splitting app with about 300 tests in CI. He owns the full stack.`,
+  "Why is he moving into AI?": `Not a pivot, an extension. Two years of <span class="hl">production engineering</span> plus an <span class="hl">MS in AI</span> (Aug 2026) means he builds LLM systems with real systems thinking: <span class="hl">tool-using agents</span>, retrieval, tracing, and cost control.`,
+  "Is he a good culture fit?": `Analytically wired. He maps the problem before touching the keyboard. Plays <span class="hl">soccer and basketball</span>, so he understands team dynamics instinctively. Writes clearly, which usually means he thinks clearly. Calm, curious, direct.`,
+  "When is he available?": `Open to work <span class="hl">now</span>. Looking for <span class="hl">full-time roles</span>, preferably remote or in the Bay Area, where the work actually matters to real people. Quick to onboard, ready to ship.`,
 };
 
-export const askFallback = `Hemanta is a <span class="hl">full-stack engineer</span> with 2+ years shipping production apps — React, Node.js, PostgreSQL, AWS. Currently deepening into <span class="hl">AI and machine learning</span> through an MS program. Open to work, remote-first.`;
+export const askFallback = `Hemanta is an <span class="hl">AI engineer</span> with an MS in AI and 2+ years shipping production web apps: React, Node.js, PostgreSQL, AWS. He builds <span class="hl">LangGraph agents and RAG systems</span>. Open to work, remote-first.`;

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { askFallback, askResponses } from "../../data/content";
 
@@ -9,7 +9,8 @@ const CHIPS = [
   "When is he available?",
 ] as const;
 
-const STREAM_INTERVAL_MS = 38;
+const STREAM_INTERVAL_MS = 15;
+const TYPING_DELAY_MS = 220;
 
 // Tokenize an HTML string into complete tags, whitespace, and text words
 // so innerHTML updates never produce partial tags.
@@ -27,15 +28,25 @@ const AskHemanta = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
   const [showResponse, setShowResponse] = useState(false);
   const [activeChip, setActiveChip] = useState<string | null>(null);
+  const [isTyping, setIsTyping] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const responseRef = useRef<HTMLParagraphElement>(null);
   const streamIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const clearStream = () => {
     if (streamIntervalRef.current) {
       clearInterval(streamIntervalRef.current);
       streamIntervalRef.current = null;
+    }
+  };
+
+  const clearTyping = () => {
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+      typingTimeoutRef.current = null;
     }
   };
 
@@ -75,7 +86,22 @@ const AskHemanta = (): JSX.Element => {
     const response =
       askResponses[query as keyof typeof askResponses] ?? askFallback;
     setActiveChip(query);
-    streamResponse(response);
+    clearStream();
+    clearTyping();
+    if (responseRef.current) responseRef.current.innerHTML = "";
+    setShowResponse(true);
+
+    if (prefersReducedMotion) {
+      setIsTyping(false);
+      streamResponse(response);
+      return;
+    }
+
+    setIsTyping(true);
+    typingTimeoutRef.current = setTimeout(() => {
+      setIsTyping(false);
+      streamResponse(response);
+    }, TYPING_DELAY_MS);
   };
 
   const handleSubmit = () => {
@@ -96,7 +122,10 @@ const AskHemanta = (): JSX.Element => {
   };
 
   useEffect(() => {
-    return () => clearStream();
+    return () => {
+      clearStream();
+      clearTyping();
+    };
   }, []);
 
   return (
@@ -108,7 +137,7 @@ const AskHemanta = (): JSX.Element => {
           ref={inputRef}
           type="text"
           className="ask-hemanta__input"
-          placeholder="Type a question..."
+          placeholder="Type a question…"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -151,7 +180,6 @@ const AskHemanta = (): JSX.Element => {
             className={`ask-hemanta__chip${activeChip === chip ? " ask-hemanta__chip--active" : ""}`}
             onClick={() => handleChipClick(chip)}
             type="button"
-            role="listitem"
             aria-pressed={activeChip === chip}
           >
             {chip}
@@ -165,15 +193,38 @@ const AskHemanta = (): JSX.Element => {
             className="ask-hemanta__response"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            exit={{ opacity: 0, y: -4, transition: { duration: 0.2, ease: "easeIn" } }}
+            transition={{ type: "spring", bounce: 0, duration: 0.3 }}
             role="status"
             aria-live="polite"
           >
             <div className="ask-hemanta__response-header" aria-hidden="true">
               <span className="ask-hemanta__response-dot" />
-              <span>Hemanta · AI response</span>
+              <span>Hemanta · from resume, projects, experience</span>
             </div>
+
+            {isTyping && (
+              <div className="ask-hemanta__typing" aria-hidden="true">
+                {[0, 1, 2].map((i) => (
+                  <motion.span
+                    key={i}
+                    className="ask-hemanta__typing-dot"
+                    animate={
+                      prefersReducedMotion ? undefined : { y: [0, -4, 0] }
+                    }
+                    transition={{
+                      type: "spring",
+                      bounce: 0.4,
+                      duration: 0.5,
+                      repeat: Infinity,
+                      repeatDelay: 0.1,
+                      delay: i * 0.12,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+
             <p className="ask-hemanta__response-text" ref={responseRef} />
           </motion.div>
         )}

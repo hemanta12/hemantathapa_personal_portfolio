@@ -33,7 +33,7 @@ const getAnimationConstants = (isMobile: boolean) => {
       PHASE1_END: MOBILE_PHASE1_END,
       PHASE2_END: MOBILE_PHASE2_END,
       PHASE3_END: MOBILE_PHASE3_END,
-      START_OFFSET_X: -8,
+      START_OFFSET_X: 10,
     };
   }
   return {
@@ -51,12 +51,29 @@ const getAnimationConstants = (isMobile: boolean) => {
 
 const LAND_RADIUS = 9;
 
-// Trail drawing constants
-const TRAIL_COLORS = {
-  phase1: "rgba(99,102,241,",
-  phase2: "rgba(79,70,229,",
-  phase3: "rgba(79,70,229,",
-} as const;
+// Resolve the active accent token to an "r, g, b" string for canvas drawing.
+function resolveAccentRgb(): string {
+  const fallback = "4, 120, 87";
+  if (typeof window === "undefined") return fallback;
+
+  const raw = getComputedStyle(document.documentElement)
+    .getPropertyValue("--accent")
+    .trim();
+  const hex = raw.replace("#", "");
+  if (hex.length === 3) {
+    const r = parseInt(hex[0] + hex[0], 16);
+    const g = parseInt(hex[1] + hex[1], 16);
+    const b = parseInt(hex[2] + hex[2], 16);
+    return `${r}, ${g}, ${b}`;
+  }
+  if (hex.length === 6) {
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    return `${r}, ${g}, ${b}`;
+  }
+  return fallback;
+}
 
 const TRAIL_MAX_LENGTHS = { phase1: 18, phase2: 14, phase3: 14 } as const;
 const TRAIL_RADII = { phase1: 0.6, phase2: 1, phase3: 0.68 } as const;
@@ -112,13 +129,14 @@ function drawTrail(
   trail: TrailPoint[],
   radius: number,
   phase: "phase1" | "phase2" | "phase3",
+  rgb: string,
 ): void {
   for (let i = 0; i < trail.length; i++) {
     const alpha = (i / trail.length) * TRAIL_ALPHAS[phase];
     ctx.beginPath();
     const trailRadius = phase === "phase2" ? 5.5 : radius * TRAIL_RADII[phase];
     ctx.arc(trail[i].x, trail[i].y, trailRadius, 0, Math.PI * 2);
-    ctx.fillStyle = `${TRAIL_COLORS[phase]}${alpha})`;
+    ctx.fillStyle = `rgba(${rgb},${alpha})`;
     ctx.fill();
   }
 }
@@ -178,6 +196,7 @@ const RoleTransition = ({ showPhoto = true }: Props): JSX.Element => {
     animationLoopCountRef.current = 0;
     const isMobile = window.matchMedia("(max-width: 900px)").matches;
     const constants = getAnimationConstants(isMobile);
+    const accentRgb = resolveAccentRgb();
 
     const canvas = canvasRef.current;
     const row = rowRef.current;
@@ -329,7 +348,7 @@ const RoleTransition = ({ showPhoto = true }: Props): JSX.Element => {
           trail1.push({ x: bx, y: by });
           if (trail1.length > TRAIL_MAX_LENGTHS.phase1) trail1.shift();
 
-          drawTrail(ctxRef, trail1, radius, "phase1");
+          drawTrail(ctxRef, trail1, radius, "phase1", accentRgb);
 
           if (ballImageRef.current?.complete) {
             drawBall(ctxRef, ballImageRef.current, bx, by, radius, spin);
@@ -347,14 +366,14 @@ const RoleTransition = ({ showPhoto = true }: Props): JSX.Element => {
 
           ctxRef.beginPath();
           ctxRef.arc(photoX, photoY, orbitR, Math.PI, angle);
-          ctxRef.strokeStyle = "rgba(79,70,229,0.25)";
+          ctxRef.strokeStyle = `rgba(${accentRgb},0.25)`;
           ctxRef.lineWidth = 1.5;
           ctxRef.stroke();
 
           trail2.push({ x: bx, y: by });
           if (trail2.length > TRAIL_MAX_LENGTHS.phase2) trail2.shift();
 
-          drawTrail(ctxRef, trail2, 9, "phase2");
+          drawTrail(ctxRef, trail2, 9, "phase2", accentRgb);
 
           if (ballImageRef.current?.complete) {
             drawBall(
@@ -392,14 +411,14 @@ const RoleTransition = ({ showPhoto = true }: Props): JSX.Element => {
 
           ctxRef.beginPath();
           ctxRef.arc(photoX, photoY, orbitR, 0, Math.PI * 2);
-          ctxRef.strokeStyle = "rgba(79,70,229,0.15)";
+          ctxRef.strokeStyle = `rgba(${accentRgb},0.15)`;
           ctxRef.lineWidth = 1.5;
           ctxRef.stroke();
 
           trail3.push({ x: bx, y: by });
           if (trail3.length > TRAIL_MAX_LENGTHS.phase3) trail3.shift();
 
-          drawTrail(ctxRef, trail3, radius, "phase3");
+          drawTrail(ctxRef, trail3, radius, "phase3", accentRgb);
 
           if (ballImageRef.current?.complete) {
             drawBall(ctxRef, ballImageRef.current, bx, by, radius, spin);
