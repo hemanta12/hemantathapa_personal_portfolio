@@ -96,7 +96,6 @@
 .home-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 48px; height: 48px; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 22px; cursor: pointer; box-shadow: 3px 3px 0 var(--ink); }
 .home-arrow--l { left: 0; }
 .home-arrow--r { right: 0; }
-.home-arrow:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
 .home-arrow:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .home-row { display: flex; gap: 20px; overflow-x: scroll; padding-bottom: 16px; scroll-snap-type: x proximity; scrollbar-color: var(--accent) var(--pale); }
 .home-row::-webkit-scrollbar { height: 12px; }
@@ -111,7 +110,6 @@
 .home-more .home-h3 { margin: 0; }
 .home-arrows { display: flex; gap: 8px; }
 .home-arrows button { width: 44px; height: 44px; border: 2px solid var(--ink); border-radius: var(--r-control); background: var(--paper); color: var(--ink); font-size: 20px; cursor: pointer; }
-.home-arrows button:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
 .home-arrows button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .home-card { padding: 20px; border: 2px solid var(--ink); border-radius: var(--r-card); background: var(--paper); }
 .home-card__img { margin-bottom: 16px; }
@@ -171,12 +169,6 @@
 .home-btn, .home-copy, .home-ghost, .home-links a, .home-email {
   transition: background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out, transform .1s ease-out;
 }
-.home-btn--fill:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
-.home-btn--line:hover { background: var(--pale); }
-.home-copy:hover { background: var(--pale); }
-.home-ghost:hover { background: rgba(255, 255, 255, 0.16); }
-.home-links a:hover { color: var(--accent-strong); }
-.home-email:hover { text-decoration: underline; text-underline-offset: 6px; }
 .home-btn:active, .home-copy:active, .home-ghost:active { transform: scale(0.97); }
 .home-btn:focus-visible, .home-copy:focus-visible, .home-ghost:focus-visible, .home-links a:focus-visible, .home-email:focus-visible {
   outline: 3px solid var(--ink); outline-offset: 3px;
@@ -186,3 +178,24 @@
   .home-btn, .home-copy, .home-ghost, .home-links a, .home-email { transition: none; }
   .home-btn:active, .home-copy:active, .home-ghost:active { transform: none; }
 }
+
+/* hover only where a pointer can hover; touch gets :active */
+@media (hover: hover) and (pointer: fine) {
+  .home-iconbtn:hover { background: var(--pale); }
+  .home-arrow:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .home-arrows button:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .home-btn--fill:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+  .home-btn--line:hover { background: var(--pale); }
+  .home-copy:hover { background: var(--pale); }
+  .home-ghost:hover { background: rgba(255, 255, 255, 0.16); }
+  .home-links a:hover { color: var(--accent-strong); }
+  .home-email:hover { text-decoration: underline; text-underline-offset: 6px; }
+}
+
+/* touch: no double-tap zoom delay, no accidental text selection on controls */
+.home-btn, .home-copy, .home-ghost, .home-arrow, .home-arrows button, .home-iconbtn, .home-links a, .home-email {
+  touch-action: manipulation; -webkit-user-select: none; user-select: none;
+}
+.home-iconbtn:active { background: var(--pale); }
+.home-arrow:active, .home-arrows button:active { background: var(--accent); color: var(--paper); }
+.home-row { overscroll-behavior-x: contain; }
