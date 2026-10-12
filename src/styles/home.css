@@ -199,3 +199,13 @@
 .home-iconbtn:active { background: var(--pale); }
 .home-arrow:active, .home-arrows button:active { background: var(--accent); color: var(--paper); }
 .home-row { overscroll-behavior-x: contain; }
+
+/* keep "See my projects" and the Resume pill on one row on phones */
+@media (max-width: 480px) {
+  .home-ctas { flex-wrap: nowrap; gap: 8px; }
+  .home-ctas .home-btn, .home-resumebar { font-size: 15px; white-space: nowrap; }
+  .home-ctas .home-btn { padding: 12px 14px; }
+  .home-resumebar { padding-left: 14px; }
+  .home-resumebar span { margin-right: 4px; }
+  .home-iconbtn { width: 36px; height: 36px; }
+}
