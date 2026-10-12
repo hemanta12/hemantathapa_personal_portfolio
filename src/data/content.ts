@@ -16,14 +16,20 @@ export type SiteContent = {
 
 export type HeroContent = {
   ctaWork: string;
-  ctaContact: string;
+  ctaResume: string;
   profileImage: string;
+};
+
+export type ProjectPoint = {
+  label: string;
+  text: string;
 };
 
 export type Project = {
   category: string;
   title: string;
-  description: string;
+  summary: string;
+  points: ProjectPoint[];
   tags: string[];
   live: string;
   github: string;
@@ -98,7 +104,7 @@ export const navLinks: NavItem[] = [
 
 export const hero: HeroContent = {
   ctaWork: "See my projects",
-  ctaContact: "Get in touch",
+  ctaResume: "Resume",
   profileImage,
 };
 
@@ -108,8 +114,13 @@ export const work: WorkContent = {
     {
       category: "AI Agent, LLM Systems",
       title: "DoveAI",
-      description:
-        "Personal AI assistant on a LangGraph agent graph with intent routing, about 40 database tools, and a verification gate that rejects replies not backed by real tool calls. Handles Whisper voice input, images, PDFs, and Gmail drafts. Langfuse tracing, multi-provider routing (Gemini, OpenAI, DeepSeek via OpenRouter) with per-model cost accounting and a monthly spend ceiling, plus prompt-injection and PII guards.",
+      summary: "Personal AI assistant that only answers from real tool calls, not guesses.",
+      points: [
+        { label: "Agent", text: "LangGraph graph with intent routing and about 40 database tools" },
+        { label: "Reliability", text: "Verification gate rejects replies not backed by real tool calls; prompt-injection and PII guards" },
+        { label: "Inputs", text: "Whisper voice, images, PDFs, Gmail drafts" },
+        { label: "Ops", text: "Langfuse tracing; Gemini, OpenAI, DeepSeek via OpenRouter with per-model cost accounting and a monthly spend ceiling" },
+      ],
       tags: ["LangGraph", "FastAPI", "Supabase", "React", "Langfuse"],
       live: "",
       github: "",
@@ -118,8 +129,13 @@ export const work: WorkContent = {
     {
       category: "Full-Stack, Real-Time, PWA",
       title: "BrokeEven",
-      description:
-        "No-signup Splitwise alternative for friends and housemates. Everyone in a group sees balances update live, with cent-exact split math. 9 active users, 2 groups, 20 expenses, and about 300 tests running in CI.",
+      summary: "No-signup Splitwise alternative for friends and housemates.",
+      points: [
+        { label: "Live", text: "Everyone in a group sees balances update in real time" },
+        { label: "Accurate", text: "Cent-exact split math" },
+        { label: "Usage", text: "9 active users, 2 groups, 20 expenses" },
+        { label: "Quality", text: "About 300 tests running in CI" },
+      ],
       tags: ["React", "TypeScript", "Express", "PostgreSQL", "Prisma", "Socket.io"],
       live: "https://brokeeven.swiftmodernsolutions.com/",
       github: "",
@@ -128,8 +144,12 @@ export const work: WorkContent = {
     {
       category: "RAG, MSAI Team Project",
       title: "Handbook FAQ Chatbot",
-      description:
-        "RAG chatbot over a 77-page handbook, built by a team of 5; my part was extraction, chunking, and adaptive retrieval. Page-level chunking (76 chunks) fixed a failure that collapsed the document into one chunk. An adaptive top-5 retriever (margin 0.4, ceiling 1.25) refuses out-of-scope questions instead of guessing.",
+      summary: "RAG chatbot that answers questions about a 77-page handbook. Team of 5.",
+      points: [
+        { label: "My part", text: "Extraction, chunking, and adaptive retrieval" },
+        { label: "Fix", text: "Page-level chunking (76 chunks) replaced a setup that collapsed the document into one chunk" },
+        { label: "Behavior", text: "Adaptive top-5 retriever (margin 0.4, ceiling 1.25) refuses out-of-scope questions instead of guessing" },
+      ],
       tags: ["Python", "PDFPlumber", "FAISS", "sentence-transformers"],
       live: "",
       github: "https://github.com/hemanta12/FAQ-chatbot",
@@ -139,8 +159,11 @@ export const work: WorkContent = {
     {
       category: "Full-Stack, Django",
       title: "LetsQuiz",
-      description:
-        "No-login trivia for solo play or 2 to 6 players in one room. 1,795 questions. Local play only.",
+      summary: "No-login trivia game for solo play or 2 to 6 players in one room.",
+      points: [
+        { label: "Content", text: "1,795 questions" },
+        { label: "Status", text: "Local play only" },
+      ],
       tags: ["Django REST", "PostgreSQL", "React", "TypeScript"],
       live: "",
       github: "",
@@ -149,8 +172,10 @@ export const work: WorkContent = {
     {
       category: "Paused",
       title: "TheBiasLens",
-      description:
-        "News analysis with fact-check retrieval. Paused mid-build; not deployed.",
+      summary: "News analysis with fact-check retrieval.",
+      points: [
+        { label: "Status", text: "Paused mid-build, not deployed" },
+      ],
       tags: ["FastAPI", "React", "Python"],
       live: "",
       github: "",
@@ -158,8 +183,12 @@ export const work: WorkContent = {
     {
       category: "Full-Stack, CMS, Booking",
       title: "Sasa Eyebrow Threading",
-      description:
-        "CMS and booking platform built from scratch: JWT admin portal, cached Google reviews via cron, Cloudflare R2 image pipeline.",
+      summary: "CMS and booking platform for a threading salon, built from scratch.",
+      points: [
+        { label: "Admin", text: "JWT-protected admin portal" },
+        { label: "Reviews", text: "Google reviews cached via cron" },
+        { label: "Media", text: "Cloudflare R2 image pipeline" },
+      ],
       tags: ["React", "Node.js", "PostgreSQL", "Cloudflare R2"],
       image: sasabrowsImage,
       live: "https://sasaeyebrowsthreading.com",
@@ -168,8 +197,12 @@ export const work: WorkContent = {
     {
       category: "Frontend, SPA",
       title: "Swift Modern Solutions",
-      description:
-        "Mobile-first marketing SPA with light/dark theme and spam-protected lead capture, targeting 90+ Lighthouse scores.",
+      summary: "Mobile-first marketing site for Swift Modern Solutions.",
+      points: [
+        { label: "Theme", text: "Light and dark modes" },
+        { label: "Leads", text: "Spam-protected lead capture" },
+        { label: "Target", text: "90+ Lighthouse scores" },
+      ],
       tags: ["React", "Vite", "Tailwind CSS"],
       image: smsImage,
       live: "https://swiftmodernsolutions.com/",
@@ -178,8 +211,11 @@ export const work: WorkContent = {
     {
       category: "Tool",
       title: "Compound Growth Calculator",
-      description:
-        "Side-by-side compound interest simulator with inflation adjustment and retirement visualization.",
+      summary: "Compound interest simulator that compares scenarios side by side.",
+      points: [
+        { label: "Adjust", text: "Inflation adjustment" },
+        { label: "Visualize", text: "Retirement growth charts" },
+      ],
       tags: ["React", "TypeScript", "Recharts"],
       image: calculatorPreviewImage,
       live: "/tools",
@@ -188,8 +224,10 @@ export const work: WorkContent = {
     {
       category: "Shipped build",
       title: "TrackMyFinance",
-      description:
-        "Personal finance tracker with charts, expense categories, and PDF export.",
+      summary: "Personal finance tracker.",
+      points: [
+        { label: "Features", text: "Charts, expense categories, PDF export" },
+      ],
       tags: ["React", "Node.js", "MySQL", "Chart.js"],
       image: trackMyFinanceImage,
       live: "",
@@ -198,8 +236,10 @@ export const work: WorkContent = {
     {
       category: "Shipped build",
       title: "Car Race",
-      description:
-        "2D car racing game where players avoid obstacles and chase a high score.",
+      summary: "2D car racing game.",
+      points: [
+        { label: "Goal", text: "Avoid obstacles and chase a high score" },
+      ],
       tags: ["JavaScript", "HTML Canvas"],
       image: carRaceImage,
       live: "",
@@ -212,9 +252,8 @@ export const about: AboutContent = {
   pullQuote:
     '"I build AI systems the way I build software: they have to work for real people, not just in a demo."',
   bio: [
-    "I am an engineer focusing on AI right now. I have 2+ years of software engineering experience building web apps, and I finished a master's in Artificial Intelligence in August 2026.",
-    "What I have learned building with AI is that the model is the easy part. The hard part is everything around it: making sure it only says what it can back up, letting it say \"I don't know\", and watching what it costs to run. A demo that works once is not a product, and most of my time goes into closing that gap.",
-    "I like to understand a problem before I write code. On a team, I am the person who asks why before asking how.",
+    "I am an AI engineer with 2+ years of experience building production web apps and a master's in Artificial Intelligence (August 2026).",
+    "What I have learned building with AI is that the model is the easy part. The hard part is everything around it: making sure it only says what it can back up, letting it say \"I don't know\", and watching what it costs to run. I like to understand a problem before I write code, so on a team I am the one who asks why before how.",
   ],
   interests: [
     {

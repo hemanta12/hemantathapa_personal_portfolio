@@ -11,11 +11,26 @@ const ProjectLinks = ({ live, github, note }: Project): JSX.Element | null =>
     </p>
   ) : null;
 
+const PointList = ({ summary, points }: Project): JSX.Element => (
+  <>
+    <p className="home-copy-text home-summary">{summary}</p>
+    {points.length > 0 && (
+      <ul className="home-points">
+        {points.map((pt) => (
+          <li key={pt.label}>
+            <strong>{pt.label}</strong> {pt.text}
+          </li>
+        ))}
+      </ul>
+    )}
+  </>
+);
+
 const Feature = ({ p, lead }: { p: Project; lead?: boolean }): JSX.Element => (
   <article className={`home-feat home-feat--text ${lead ? "home-feat--lead" : ""}`}>
     <p className="home-meta">{p.category}</p>
     <h3 className="home-h1">{p.title}</h3>
-    <p className="home-copy-text">{p.description}</p>
+    <PointList {...p} />
     <p className="home-tags">{p.tags.join(", ")}</p>
     <ProjectLinks {...p} />
   </article>
@@ -63,7 +78,7 @@ const Work = (): JSX.Element => {
               </div>
               <p className="home-meta">{p.category}</p>
               <h3 className="home-h2">{p.title}</h3>
-              <p className="home-copy-text">{p.description}</p>
+              <PointList {...p} />
               <p className="home-tags">{p.tags.join(", ")}</p>
               <ProjectLinks {...p} />
             </article>

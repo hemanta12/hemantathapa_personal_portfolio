@@ -17,6 +17,7 @@ const AboutExperience = (): JSX.Element => (
         </div>
       </div>
 
+      <h3 className="home-h3 home-label">Work Experience</h3>
       <div className="home-exp">
         {experience.map((e) => (
           <article key={e.company} className="home-exp__row">
@@ -37,6 +38,7 @@ const AboutExperience = (): JSX.Element => (
         ))}
       </div>
 
+      <h3 className="home-h3 home-label">Outside of work</h3>
       <div className="home-interests">
         {about.interests.map((i) => (
           <div key={i.name}>
