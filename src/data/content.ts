@@ -1,6 +1,6 @@
 import carRaceImage from "../assets/car-race.png";
 import calculatorPreviewImage from "../assets/calculator-preview.png";
-import resumePdf from "../assets/Hemanta_thapa_Resume_2026_base.pdf";
+import resumePdf from "../assets/Hemanta_Thapa_AI_Engineer_Resume.pdf";
 import profileImage from "../assets/hero.jpg";
 import trackMyFinanceImage from "../assets/trackmyfinance-dashboard.png";
 import sasabrowsImage from "../assets/sasabrows-homepage.webp";
